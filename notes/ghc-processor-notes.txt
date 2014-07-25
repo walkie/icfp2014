@@ -1,0 +1,79 @@
+ghc:
+
+8-bit uint registers
+
+2 memories: data and code, each with 256 locations
+=> program contains at most 256 instructions
+=> each line of code is stored at the corresponding code memory location
+
+up to 1024 execution cycles (per game step)
+
+content of data memory and registers persist
+
+8+1 Registers:
+
+PC		program counter
+A
+B
+C
+D
+E
+F
+G
+H
+
+
+an argument is either
+a register: A
+an indirect register: [A] (but not [PC])
+a constant: 0
+contents of data memory location: [0]
+
+
+MOV dest, src		dest may not be constant
+INC dest			may not be constant or PC
+DEC dest			may not be constant or PC
+ADD dest, src		dest may not be constant or PC
+SUB dest, src		dest may not be constant or PC
+MUL dest, src		dest may not be constant or PC
+DIV dest, src		dest may not be constant or PC. Error if src=0
+AND dest, src		dest may not be constant or PC.
+OR dest, src		dest may not be constant or PC.
+XOR dest, src		dest may not be constant or PC.
+JLT targ,x,y		x<y?PC=targ
+JEQ targ,x,y		x==y?PC=targ
+JGT targ,x,y		x>y?PC=targ
+INT i
+HLT
+
+
+Interrupt reference:
+0: set ghost direction
+	direction<-A
+1: get first lambda-man coordinates
+	x->A
+	y->B
+2: get second lambda-man coordinates
+	x->A
+	y->B
+	single lambda-man game: behaviour unknown
+3: get ghost index
+	index->A
+4: get ghost starting position
+	index<-A
+	x->A
+	y->B
+5: get ghost current position
+	index<-A
+	x->A
+	y->B
+6: get ghost status
+	index<-A
+	vitality->A
+	direction->B
+7: get map square content
+	x<-A
+	y<-B
+	content->A
+8: debug
+	sends contents of PC, A..H to external debug agent

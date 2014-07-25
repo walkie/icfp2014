@@ -69,12 +69,24 @@ inst (LDF a) = use env >>= pushD . Clos a >> incPC
 
 inst (AP  n) = do (faddr,fenv) <- popClos
                   args <- replicateM n popD
-                  use env >>= pushC . FramePtr
-                  use pc  >>= pushC . Return
-                  env .= Values args : fenv
+                  pushFramePtr
+                  pushReturn
+                  env .= Values (reverse args) : fenv
                   pc  .= faddr
 
 inst RTN     = do raddr <- popReturn
                   renv  <- popFramePtr
                   env .= renv
                   pc  .= raddr
+
+-- Recursive environment function calls
+inst (DUM n) = env %= (Dummy n :) >> incPC
+
+inst (RAP n) = do (faddr,fenv) <- popClos
+                  popDummy n
+                  args <- replicateM n popD
+                  env %= (Values (reverse args) :)
+                  pushFramePtr
+                  pustReturn
+                  env .= fenv
+                  pc  .= faddr

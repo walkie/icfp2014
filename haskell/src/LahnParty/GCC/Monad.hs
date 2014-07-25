@@ -70,6 +70,18 @@ popC = do
     (a:as) -> stackC .= as >> return a
     _      -> throwError (StackError EmptyControlStack)
 
+-- | Push PC+1 to the control stack as a join address.
+pushJoin :: Monad m => GCCM m ()
+pushJoin = use pc >>= pushC . Join . (+1)
+
+-- | Push PC+1 to the control stack as a return address.
+pushReturn :: Monad m => GCCM m ()
+pushReturn = use pc >>= pushC . Return . (+1)
+
+-- | Push the current environment to the control stack.
+pushFramePtr :: Monad m => GCC m ()
+pushFramePtr = use env >>= pushC . FramePtr
+
 -- | Pop a join address off the control stack.
 popJoin :: Monad m => GCCM m Addr
 popJoin = popC >>= toJoin
@@ -93,3 +105,13 @@ envGet n i = use env >>= getAt n >>= toValues >>= getAt i
 envSet :: Monad m => Int -> Int -> Value -> GCCM m ()
 envSet n i v = env <~ (use env >>= updateAt n inFrame)
   where inFrame f = toValues f >>= setAt i v >>= return . Values
+
+-- | Pop a dummy frame of the size or raise an error.
+popDummy :: Monad m => Int -> GCCM m ()
+popDummy n = do
+    e <- use env
+    case e of
+      (f:fs) -> toDummy f >>= check >> env .= fs
+      _      -> throwError OutOfBounds
+  where check n' = unless (n == n')
+                 $ raise FrameError ("dummy length " ++ show n) (show n')

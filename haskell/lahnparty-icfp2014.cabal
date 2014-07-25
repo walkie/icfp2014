@@ -13,3 +13,5 @@ library
     LahnParty.GCC.Syntax,
     LahnParty.GCC.State,
     LahnParty.GCC.Machine
+    LahnParty.GHC.Syntax
+    LahnParty.GHC.Simulation

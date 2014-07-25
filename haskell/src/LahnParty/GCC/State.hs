@@ -33,6 +33,7 @@ data Control
   =  Join     Addr
   |  Return   Addr
   |  FramePtr Env
+  |  Stop
   deriving (Eq,Show)
 
 

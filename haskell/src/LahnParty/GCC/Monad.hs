@@ -70,6 +70,14 @@ popC = do
     (a:as) -> stackC .= as >> return a
     _      -> throwError (StackError EmptyControlStack)
 
+-- | True if the top of the control stack is the Stop symbol.
+isStop :: Monad m => GCCM m Bool
+isStop = do
+  s <- use stackC
+  case s of
+    (Stop:_) -> return True
+    _        -> return False
+
 -- | Push PC+1 to the control stack as a join address.
 pushJoin :: Monad m => GCCM m ()
 pushJoin = use pc >>= pushC . Join . (+1)
@@ -79,7 +87,7 @@ pushReturn :: Monad m => GCCM m ()
 pushReturn = use pc >>= pushC . Return . (+1)
 
 -- | Push the current environment to the control stack.
-pushFramePtr :: Monad m => GCC m ()
+pushFramePtr :: Monad m => GCCM m ()
 pushFramePtr = use env >>= pushC . FramePtr
 
 -- | Pop a join address off the control stack.

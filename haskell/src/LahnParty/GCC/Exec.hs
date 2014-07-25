@@ -74,10 +74,12 @@ inst (AP  n) = do (faddr,fenv) <- popClos
                   env .= Values (reverse args) : fenv
                   pc  .= faddr
 
-inst RTN     = do raddr <- popReturn
-                  renv  <- popFramePtr
-                  env .= renv
-                  pc  .= raddr
+inst RTN     = do stop <- isStop
+                  unless stop $ do
+                    raddr <- popReturn
+                    renv  <- popFramePtr
+                    env .= renv
+                    pc  .= raddr
 
 -- Recursive environment function calls
 inst (DUM n) = env %= (Dummy n :) >> incPC
@@ -87,6 +89,9 @@ inst (RAP n) = do (faddr,fenv) <- popClos
                   args <- replicateM n popD
                   env %= (Values (reverse args) :)
                   pushFramePtr
-                  pustReturn
+                  pushReturn
                   env .= fenv
                   pc  .= faddr
+
+-- Terminate execution (deprecated)
+inst STOP = pushC Stop

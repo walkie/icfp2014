@@ -10,4 +10,5 @@ library
   hs-source-dirs:   src
   build-depends:    base >= 4.6
   exposed-modules:
-    LahnParty.GCC.Syntax
+    LahnParty.GCC.Syntax,
+    LahnParty.GCC.State

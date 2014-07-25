@@ -1,9 +1,6 @@
 
 module LahnParty.GCC.Syntax where
 
--- | A pointer into the heap.
-type Ptr = Int
-
 -- | Absolute instruction address.
 type Addr = Int
 

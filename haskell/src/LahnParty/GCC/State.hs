@@ -1,6 +1,8 @@
+{-# LANGUAGE TemplateHaskell #-}
 
 module LahnParty.GCC.State where
 
+import Control.Lens
 import Data.List (splitAt)
 
 import LahnParty.GCC.Syntax
@@ -16,22 +18,6 @@ data Value
   |  Pair Value Value
   |  Clos Frame Addr
   deriving (Eq,Show)
-
-
---
--- * Program state
---
-
--- | A stack.
-type Stack a = [a]
-
--- | State of the GCC machine.
-data GCC = GCC {
-  programCtr   :: Addr,
-  dataStack    :: Stack Value,
-  controlStack :: Stack Addr,
-  environment  :: Env
-}
 
 
 --
@@ -64,3 +50,21 @@ envSet 0 sn v (f:fs) = case splitAt sn f of
   (as,_:bs) -> Right ((as ++ Just v : bs) : fs)
   _         -> Left OutOfBounds
 envSet fn sn v (f:fs) = fmap (f:) $ envSet (fn-1) sn v fs
+
+
+--
+-- * Program state
+--
+
+-- | A stack.
+type Stack a = [a]
+
+-- | State of the GCC machine.
+data GCC = GCC {
+  _pc     :: Addr,
+  _stackD :: Stack Value,
+  _stackC :: Stack Addr,
+  _env    :: Env
+}
+
+$(makeLenses ''GCC)

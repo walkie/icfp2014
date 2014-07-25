@@ -12,8 +12,8 @@ library
   exposed-modules:
     LahnParty.GCC.Syntax,
     LahnParty.GCC.State,
-    LahnParty.GCC.Machine
-    LahnParty.GHC.Syntax
-    LahnParty.GHC.Machine
+    LahnParty.GCC.Error,
     LahnParty.GCC.Monad,
-    LahnParty.GCC.Exec
+    LahnParty.GCC.Exec,
+    LahnParty.GHC.Syntax,
+    LahnParty.GHC.Machine

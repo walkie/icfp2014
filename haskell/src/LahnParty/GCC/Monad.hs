@@ -17,48 +17,6 @@ import LahnParty.GCC.State
 type GCCM m a = StateT GCC (ExceptT Error m) a
 
 
--- ** Errors
-
--- | Errors that can occur during execution of a GCC program.
-data Error
-  =  EnvError     EnvError
-  |  StackError   StackError
-  |  TypeError    String
-  |  ControlError String
-  |  DivByZero
-  deriving (Eq,Show)
-
--- | Convert the given value to an integer, or raise a type error.
-toInt :: Monad m => Value -> GCCM m Int
-toInt (Lit i) = return i
-toInt v = throwError $ TypeError $ "Expected int, got: " ++ show v
-
--- | Convert the given value to a pair, or raise a type error.
-toPair :: Monad m => Value -> GCCM m (Value,Value)
-toPair (Pair a b) = return (a,b)
-toPair v = throwError $ TypeError $ "Expected pair, got: " ++ show v
-
--- | Convert the given value to a closure, or raise a type error.
-toClos :: Monad m => Value -> GCCM m (Addr,Env)
-toClos (Clos a e) = return (a,e)
-toClos v = throwError $ TypeError $ "Expected closure, got: " ++ show v
-
--- | Convert the control element to a join address.
-toJoin :: Monad m => Control -> GCCM m Addr
-toJoin (Join a) = return a
-toJoin c = throwError $ ControlError $ "Expected join, got: " ++ show c
-
--- | Convert the control element to a return address.
-toReturn :: Monad m => Control -> GCCM m Addr
-toReturn (Return a) = return a
-toReturn c = throwError $ ControlError $ "Expected return, got: " ++ show c
-
--- | Convert the control element to a frame pointer (environment).
-toFramePtr :: Monad m => Control -> GCCM m Env
-toFramePtr (FramePtr e) = return e
-toFramePtr c = throwError $ ControlError $ "Expected frame pointer, got: " ++ show c
-
-
 -- ** Manipulate program counter
 
 -- | Increment the program counter.

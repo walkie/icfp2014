@@ -1,12 +1,14 @@
 {-- 
  - Simulates the Operation of the GHC microcontroller
  --}
-module Lahnparty.GHC.Simulation where
+module LahnParty.GHC.Simulation where
 
 import Lahnparty.GHC.Syntax
 import Data.Array.IArray
 import Data.Word
 import Data.Bits
+
+maxSteps = 1023
 
 type ProgramCounter = Word8
 data GHCRegister = GHCRegister {
@@ -18,7 +20,7 @@ data GHCRegister = GHCRegister {
     rF :: Word8,
     rG :: Word8,
     rH :: Word8
-    } 
+    } deriving (Show)
 
 type InstructionCounter = Int
 --should be fixed in size
@@ -68,8 +70,11 @@ singleInstr state =
         increaseIc = 
             if (executionOver afterstate) then afterstate else 
                 afterstate {instr = (instr afterstate)+1}
+        ifOver st = if ( (instr st) > maxSteps ) then 
+            st {executionOver = True} else st
+        
     in 
-        increaseIc
+        ifOver  increaseIc
 
 getSourceVal :: SrcArgument -> GHCState ->  Word8
 getSourceVal src state = 

@@ -40,3 +40,81 @@ add a, b					; a<-a+b	(a is now x+y dist)			18
 int8						; debug									19
 hlt							; halt
 
+
+******************************************************************
+
+; follow the left wall -- untested!
+
+int 3	; get ghost id
+int 5	; ghost position in x = a, y = b
+mov [200], a		; x left
+mov [201], b		; y left
+mov [202], a		; x front
+mov [203], b		; y front
+mov [204], a		; x right
+mov [205], b		; y right
+int 3	; get ghost id
+int 6	; get ghost vitality/direction (direction is in b)
+mov h, b
+mov [anddir1], h
+mov [anddir2], h
+and [anddir1], 1
+and [anddir2], 2
+
+jeq "dirUpDown", [anddir1], 0	; direction: left/right (else case)
+	mov [subtrY], 1
+	div [anddir2], 2	; anddir2 = anddir2<<1
+	sub [subtrY], [anddir2]
+	sub [201], [subtrY]
+	add [202], [subtrY]	; front tile
+	add [206], [subtrY]	; right tile
+	jeq "dirLeftRight", 0, 0
+"dirUpDown:"	; IF case
+	mov [subtrX], 1		; prepare subtraction
+	sub [subtrX], [anddir1]	; subtract direction from 1 -> either 1 (up) or 255 (down)
+	sub [200], [subtrX]		; subtract subtrX from x coord. if up, then -1, if down, then -255 (=+1)
+	sub [203], [subtrX]		; front tile (if dir%2=0, then front subtraction = (left x subtraction))	
+	add [205], [subtrX]		; right tile
+"dirLeftRight" ; now move parameters to the registers so we can ask for the tile:
+mov a, [200]
+mov b, [201]
+int 7		; map square content to the left -> a
+mov [210], a	; left square
+mov a, [202]
+mov b, [203]
+int 7		; map square content to the front -> a
+mov [211], a	; front square
+mov a, [204]
+mov b, [205]
+int 7		; map square content to the right -> a
+mov [212], a	; right square
+
+; no wall to the left
+jeq	"wallToTheLeft", [210], ´WallSymbol´		(´WallSymbol´ = 0)
+	// -> no wall to the left
+	// if there is no wall to the left, rotate left
+	add h, 1    //  rotate left
+	and h, 3    //  rotate left
+	mov a, h
+	int 1		; new direction
+	hlt			; stop
+"wallToTheLeft":
+jeq "wallToTheFront", [211], ´WallSymbol´
+	// -> no wall to the front
+	// continue moving
+	hlt	; stop, do nothing
+"wallToTheFront":
+jeq "wallToTheRight", [212], ´WallSymbol´
+	// -> no wall to the right
+	add h, 3	; rotate right
+	and h, 3	; rotate right
+	mov a, h	; set direction register
+	int 1		; new direction
+	hlt			; stop
+"wallToTheRight":
+	// move back
+	add h, 2	; rotate back
+	and h, 2
+	mov a, h
+	int 1
+	hlt

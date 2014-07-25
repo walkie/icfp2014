@@ -1,3 +1,6 @@
+{-- 
+ - Simulates the Operation of the GHC microcontroller
+ --}
 module Lahnparty.GHC.Simulation where
 
 import Lahnparty.GHC.Syntax
@@ -15,54 +18,58 @@ data GHCRegister = GHCRegister {
     rF :: Word8,
     rG :: Word8,
     rH :: Word8
-    }
+    } 
 
 type InstructionCounter = Int
 --should be fixed in size
 type DataMemory    = Array Word8 Word8
 type ProgramMemory = Array Word8 Instructions
+
 data GHCState = GHCState {
     datam :: DataMemory, 
     progm :: ProgramMemory, 
     reg :: GHCRegister, 
     pc :: ProgramCounter, 
-    instr :: InstructionCounter}
-
+    instr :: InstructionCounter,
+    executionOver :: Bool} 
 
 run :: GHCState -> GHCState 
-run state = undefined
+run state = 
+    if (not (executionOver state)) then 
+        ((run.singleInstr) state) else state
 
 singleInstr :: GHCState -> GHCState
 singleInstr state =
-    case ((progm state)!(pc state)) of 
-        (MOV dst src)   -> setMov  dst (getSourceVal src state) state 
-        (INC dst)       -> setDest dst ((getDestVal dst state)+1) state
-        (DEC dst)       -> setDest dst ((getDestVal dst state)-1) state
-        (ADD dst src)   -> 
-            setDest dst ((getSourceVal src state)+(getDestVal dst state)) state 
-        (SUB dst src)   -> 
-            setDest dst ((getSourceVal src state)-(getDestVal dst state)) state 
-        (MUL dst src)   -> 
-            setDest dst ((getSourceVal src state)*(getDestVal dst state)) state 
-        (DIV dst src)   -> 
-            setDest dst ((getSourceVal src state)`div`(getDestVal dst state)) state 
-        (AND dst src)    -> 
-            setDest dst ((getSourceVal src state).&.(getDestVal dst state)) state 
-        (OR  dst src)    -> 
-            setDest dst ((getSourceVal src state).|.(getDestVal dst state)) state 
-        (XOR  dst src)    -> 
-            setDest dst ((getSourceVal src state)`xor`(getDestVal dst state)) state 
-        (JLT (TConstant t) x y)  -> 
-            if ((getSourceVal x state)<(getSourceVal y state)) 
-                then (setMov (MRegister PC) t state) else state
-        (JEQ (TConstant t) x y)  -> 
-            if ((getSourceVal x state)==(getSourceVal y state)) 
-                then (setMov (MRegister PC) t state) else state
-        (JGT (TConstant t) x y)  -> 
-            if ((getSourceVal x state)>(getSourceVal y state)) 
-                then (setMov (MRegister PC) t state) else state
-        (INT a)      -> state
-        (HLT)        -> state 
+    let executeBinOP src dst op =
+            setDest dst (op (getSourceVal src state) (getDestVal dst state)) state 
+        conditionaljump t x y condition = 
+                if (condition (getSourceVal x state) (getSourceVal y state)) 
+                    then (setMov (MRegister PC) t state) else state
+        step = if (executionOver state) then state else  
+            case ((progm state)!(pc state)) of 
+                (MOV dst src)   -> setMov  dst (getSourceVal src state) state 
+                (INC dst)       -> setDest dst ((getDestVal dst state)+1) state
+                (DEC dst)       -> setDest dst ((getDestVal dst state)-1) state
+                (ADD dst src)   -> executeBinOP src dst (+)
+                (SUB dst src)   -> executeBinOP src dst (-)
+                (MUL dst src)   -> executeBinOP src dst (*)
+                (DIV dst src)   -> executeBinOP src dst div
+                (AND dst src)   -> executeBinOP src dst (.&.)
+                (OR  dst src)   -> executeBinOP src dst (.|.)
+                (XOR  dst src)  -> executeBinOP src dst xor
+                (JLT (TConstant t) x y)  -> conditionaljump t x y (<)
+                (JEQ (TConstant t) x y)  -> conditionaljump t x y (==) 
+                (JGT (TConstant t) x y)  -> conditionaljump t x y (>)
+                (INT a)      -> state
+                (HLT)        -> state {executionOver = True} 
+        afterstate = if ((pc step)==(pc state)&&(not $ executionOver step)) 
+                        then step {pc = (pc step)+1}
+                        else step
+        increaseIc = 
+            if (executionOver afterstate) then afterstate else 
+                afterstate {instr = (instr afterstate)+1}
+    in 
+        increaseIc
 
 getSourceVal :: SrcArgument -> GHCState ->  Word8
 getSourceVal src state = 
@@ -78,7 +85,8 @@ getSourceVal src state =
        (SRegister (GP H))        -> rH $ reg state
        (SRegister PC)            -> pc state
        (SDataMemory x)    -> (datam state)!x
-       (SIndirectRegister r)-> getSourceVal (SRegister (GP r)) state
+       (SIndirectRegister r)-> 
+            (datam state)!(getSourceVal (SRegister (GP r)) state)
 
 getDestVal :: DestArgument -> GHCState -> Word8
 getDestVal dst state = 
@@ -92,7 +100,8 @@ getDestVal dst state =
        (DRegister (G))        -> rG $ reg state
        (DRegister (H))        -> rH $ reg state
        (DDataMemory x)    -> (datam state)!x
-       (DIndirectRegister r)-> getDestVal (DRegister (r)) state
+       (DIndirectRegister r)-> 
+            (datam state)!(getDestVal (DRegister (r)) state)
 
 setDest :: DestArgument -> Word8 -> GHCState -> GHCState
 setDest dest val state = 
@@ -105,7 +114,9 @@ setDest dest val state =
        (DRegister (F))        -> state {reg = (reg state) {rF = val}}
        (DRegister (G))        -> state {reg = (reg state) {rG = val}}
        (DRegister (H))        -> state {reg = (reg state) {rH = val}}   
-       (DIndirectRegister r)  -> setDest (DRegister r) val state 
+       (DIndirectRegister r)  -> 
+            state {datam = 
+            (datam state) // [((getDestVal (DRegister r) state), val)] }
        (DDataMemory x)        -> state {datam = (datam state)//[(x,val)]}
 
 setMov :: MovArgument -> Word8 -> GHCState -> GHCState 

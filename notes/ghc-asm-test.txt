@@ -1,0 +1,42 @@
+some programs for the ghc cpu
+
+******************************************************************
+
+; small test program
+"adv":												;	0
+inc c												;	0
+mov e, c											;	1
+"incr:"												;	2
+inc [c]												;	2
+mov f, [c]											;	3
+jeq "adv", [c], 255									;	4
+jeq "incr", 0, 0	; alternative: mov PC, "incr"	;	5
+
+
+*****************************************************************
+
+; manhattan distance between ghost and \-man #1
+int 3						; get ghost id							0
+int 5						; get ghost coords (a, b)				1
+mov g, a					; ghost(x) -> g							2
+mov h, b					; ghost(y) -> h							3
+int 1						; get lambdaman coords (a, b)			4
+mov e, a					; man(x) -> e							5
+mov f, b					; man(y) -> f							6
+int 8						; debug									7
+sub a, g					; man(x) - ghost(x) => a	x distance	8
+sub b, h					; man(y) - ghost(y) => b	y distance	9
+mov c, 255					; c = 255								10
+jgt "manGtGhostX", e, g		; if man(x) > ghost(x), test y			11
+sub c, a					; 255-a -> c  make value positive		12
+mov a, c					; a <-c 								13
+"manGtGhostX":				LABEL! DELETE ME!						14
+jgt "manGtGhostY", f, h		; if man(y) > ghost(y), move on			14
+sub c, b					; 255-b	-> c	make value positive		15
+mov b, c					; a <- b								16
+"manGtGhostY":				LABEL! DELETE ME!						17
+mov c, a					; a->c (c is now x distance)			17
+add a, b					; a<-a+b	(a is now x+y dist)			18
+int8						; debug									19
+hlt							; halt
+

@@ -53,11 +53,14 @@ singleInstr state =
         (XOR  dst src)    -> 
             setDest dst ((getSourceVal src state)`xor`(getDestVal dst state)) state 
         (JLT (TConstant t) x y)  -> 
-            if (x<y) then (setMov (MRegister PC) state t) else state
+            if ((getSourceVal x state)<(getSourceVal y state)) 
+                then (setMov (MRegister PC) t state) else state
         (JEQ (TConstant t) x y)  -> 
-            if (x==y) then (setMov (MRegister PC) state t) else state
+            if ((getSourceVal x state)==(getSourceVal y state)) 
+                then (setMov (MRegister PC) t state) else state
         (JGT (TConstant t) x y)  -> 
-            if (x>y) then (setMov (MRegister PC) state t) else state
+            if ((getSourceVal x state)>(getSourceVal y state)) 
+                then (setMov (MRegister PC) t state) else state
         (INT a)      -> state
         (HLT)        -> state 
 

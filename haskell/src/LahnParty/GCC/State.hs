@@ -49,19 +49,19 @@ data EnvError = OutOfBounds | Uninitialized
   deriving (Eq,Show)
 
 -- | Get a value from the environment.
-envGet :: Int -> Int -> Env -> Either EnvError Value
-envGet 0 sn (f:_)
+_envGet :: Int -> Int -> Env -> Either EnvError Value
+_envGet 0 sn (f:_)
   | sn < length f = maybe (Left Uninitialized) Right (f !! sn)
   | otherwise     = Left OutOfBounds
-envGet fn sn (_:fs) = envGet (fn-1) sn fs
-envGet _  _  _      = Left OutOfBounds
+_envGet fn sn (_:fs) = _envGet (fn-1) sn fs
+_envGet _  _  _      = Left OutOfBounds
 
 -- | Set a value in the environment.
-envSet :: Int -> Int -> Value -> Env -> Either EnvError Env
-envSet 0 sn v (f:fs) = case splitAt sn f of
+_envSet :: Int -> Int -> Value -> Env -> Either EnvError Env
+_envSet 0 sn v (f:fs) = case splitAt sn f of
   (as,_:bs) -> Right ((as ++ Just v : bs) : fs)
   _         -> Left OutOfBounds
-envSet fn sn v (f:fs) = fmap (f:) $ envSet (fn-1) sn v fs
+_envSet fn sn v (f:fs) = fmap (f:) $ _envSet (fn-1) sn v fs
 
 
 --

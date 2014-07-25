@@ -14,4 +14,6 @@ library
     LahnParty.GCC.State,
     LahnParty.GCC.Machine
     LahnParty.GHC.Syntax
-    LahnParty.GHC.Simulation
+    LahnParty.GHC.Machine
+    LahnParty.GCC.Monad,
+    LahnParty.GCC.Exec

@@ -36,20 +36,22 @@ inst (LD n i) = envGet n i >>= pushD >> incPC
 inst ADD = intOp (+) >> incPC
 inst SUB = intOp (-) >> incPC
 inst MUL = intOp (*) >> incPC
-inst DIV = do b <- popInt; a <- popInt;
-              when (b == 0) (throwError DivByZero)
-              pushD (Lit (a `div` b))
-              incPC
+inst DIV = do
+  b <- popInt; a <- popInt;
+  when (b == 0) (throwError DivByZero)
+  pushD (Lit (a `div` b))
+  incPC
 
 -- Logic
 inst CEQ  = boolOp (==) >> incPC
 inst CGT  = boolOp (>)  >> incPC
 inst CGTE = boolOp (>=) >> incPC
-inst ATOM = do v <- popD
-               case v of
-                 Lit _ -> pushD (Lit 1)
-                 _     -> pushD (Lit 0)
-               incPC
+inst ATOM = do
+  v <- popD
+  case v of
+    Lit _ -> pushD (Lit 1)
+    _     -> pushD (Lit 0)
+  incPC
 
 -- Pairs
 inst CONS = liftM2 Pair popD popD >> incPC
@@ -58,60 +60,67 @@ inst CDR  = popPair >>= pushD . snd >> incPC
 
 -- Branching
 inst JOIN      = popJoin >>= setPC
-inst (SEL t f) = do b <- popInt
-                    pushJoin
-                    if b == 0
-                      then pc .= f
-                      else pc .= t
+inst (SEL t f) = do
+  b <- popInt
+  pushJoin
+  if b == 0
+    then pc .= f
+    else pc .= t
 
 -- Function calls
 inst (LDF a) = use env >>= pushD . Clos a >> incPC
 
-inst (AP  n) = do (faddr,fenv) <- popClos
-                  args <- replicateM n popD
-                  pushFramePtr
-                  pushReturn
-                  env .= Values (reverse args) : fenv
-                  pc  .= faddr
+inst (AP n) = do
+  (faddr,fenv) <- popClos
+  args <- replicateM n popD
+  pushFramePtr
+  pushReturn
+  env .= Values (reverse args) : fenv
+  pc  .= faddr
 
-inst RTN     = do stop <- isStop
-                  unless stop $ do
-                    raddr <- popReturn
-                    renv  <- popFramePtr
-                    env .= renv
-                    pc  .= raddr
+inst RTN = do
+  stop <- isStop
+  unless stop $ do
+    raddr <- popReturn
+    renv  <- popFramePtr
+    env .= renv
+    pc  .= raddr
 
 -- Recursive environment function calls
 inst (DUM n) = env %= (Dummy n :) >> incPC
 
-inst (RAP n) = do (faddr,fenv) <- popClos
-                  popDummy n
-                  args <- replicateM n popD
-                  env %= (Values (reverse args) :)
-                  pushFramePtr
-                  pushReturn
-                  env .= fenv
-                  pc  .= faddr
+inst (RAP n) = do
+  (faddr,fenv) <- popClos
+  popDummy n
+  args <- replicateM n popD
+  env %= (Values (reverse args) :)
+  pushFramePtr
+  pushReturn
+  env .= fenv
+  pc  .= faddr
 
 -- Terminate execution (deprecated)
 inst STOP = pushC Stop
   
 -- Tail call extensions
-inst (TSEL t f) = do b <- popInt
-                     if b == 0
-                       then pc .= f
-                       else pc .= t
+inst (TSEL t f) = do
+  b <- popInt
+  if b == 0
+    then pc .= f
+    else pc .= t
 
-inst (TAP n)    = do (faddr,fenv) <- popClos
-                     args <- replicateM n popD
-                     pushFramePtr
-                     env .= Values (reverse args) : fenv
-                     pc  .= faddr
+inst (TAP n) = do
+  (faddr,fenv) <- popClos
+  args <- replicateM n popD
+  pushFramePtr
+  env .= Values (reverse args) : fenv
+  pc  .= faddr
 
-inst (TRAP n)   = do (faddr,fenv) <- popClos
-                     popDummy n
-                     args <- replicateM n popD
-                     env %= (Values (reverse args) :)
-                     pushFramePtr
-                     env .= fenv
-                     pc  .= faddr
+inst (TRAP n) = do
+  (faddr,fenv) <- popClos
+  popDummy n
+  args <- replicateM n popD
+  env %= (Values (reverse args) :)
+  pushFramePtr
+  env .= fenv
+  pc  .= faddr

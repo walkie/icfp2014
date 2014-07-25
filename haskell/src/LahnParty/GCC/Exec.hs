@@ -59,7 +59,7 @@ inst CDR  = popPair >>= pushD . snd >> incPC
 -- Branching
 inst JOIN      = popJoin >>= setPC
 inst (SEL t f) = do b <- popInt
-                    use pc >>= pushC . Join . (+1)
+                    pushJoin
                     if b == 0
                       then pc .= f
                       else pc .= t
@@ -95,3 +95,23 @@ inst (RAP n) = do (faddr,fenv) <- popClos
 
 -- Terminate execution (deprecated)
 inst STOP = pushC Stop
+  
+-- Tail call extensions
+inst (TSEL t f) = do b <- popInt
+                     if b == 0
+                       then pc .= f
+                       else pc .= t
+
+inst (TAP n)    = do (faddr,fenv) <- popClos
+                     args <- replicateM n popD
+                     pushFramePtr
+                     env .= Values (reverse args) : fenv
+                     pc  .= faddr
+
+inst (TRAP n)   = do (faddr,fenv) <- popClos
+                     popDummy n
+                     args <- replicateM n popD
+                     env %= (Values (reverse args) :)
+                     pushFramePtr
+                     env .= fenv
+                     pc  .= faddr

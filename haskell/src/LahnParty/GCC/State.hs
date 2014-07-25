@@ -9,26 +9,34 @@ import LahnParty.GCC.Syntax
 
 
 --
--- * Values
---
-
--- | Values in the data stack or environment frame.
-data Value 
-  =  Lit  Int
-  |  Pair Value Value
-  |  Clos Frame Addr
-  deriving (Eq,Show)
-
-
---
 -- * Stacks
 --
 
 -- | A stack.
 type Stack a = [a]
 
+-- | The data stack.
+type DataStack = Stack Value
+
+-- | The control stack.
+type ControlStack = Stack Control
+
 -- | Errors by underflowing stacks.
 data StackError = EmptyDataStack | EmptyControlStack
+  deriving (Eq,Show)
+
+-- | Values in the data stack or environment frame.
+data Value 
+  =  Lit  Int
+  |  Pair Value Value
+  |  Clos Addr  Env
+  deriving (Eq,Show)
+
+-- | Elements in the control stack.
+data Control
+  =  Join     Addr
+  |  Return   Addr
+  |  FramePtr Env
   deriving (Eq,Show)
 
 
@@ -79,8 +87,8 @@ _envSet fn sn v (f:fs) = fmap (f:) $ _envSet (fn-1) sn v fs
 -- | State of the GCC machine.
 data GCC = GCC {
   _pc     :: Addr,
-  _stackD :: Stack Value,
-  _stackC :: Stack Addr,
+  _stackD :: DataStack,
+  _stackC :: ControlStack,
   _env    :: Env
 }
 

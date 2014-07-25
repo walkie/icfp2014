@@ -56,9 +56,9 @@ inst CAR  = popPair >>= pushD . fst >> incPC
 inst CDR  = popPair >>= pushD . snd >> incPC
 
 -- Branching
-inst JOIN      = popC >>= setPC
+inst JOIN      = popJoin >>= setPC
 inst (SEL t f) = do b <- popInt
-                    use pc >>= pushC . (+1)
+                    use pc >>= pushC . Join . (+1)
                     if b == 0
                       then setPC f
                       else setPC t

@@ -48,6 +48,14 @@ type Env = [Frame]
 data EnvError = OutOfBounds | Uninitialized
   deriving (Eq,Show)
 
+-- | Create a new frame of the specified size.
+newFrame :: Int -> Frame
+newFrame n = replicate n Nothing
+
+-- | Create a new frame initialized with the given values.
+newFrameWith :: [Value] -> Frame
+newFrameWith = map Just
+
 -- | Get a value from the environment.
 _envGet :: Int -> Int -> Env -> Either EnvError Value
 _envGet 0 sn (f:_)

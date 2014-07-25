@@ -124,3 +124,6 @@ inst (TRAP n) = do
   pushFramePtr
   env .= fenv
   pc  .= faddr
+  
+-- Pascal extensions
+inst (ST n i) = popD >>= envSet n i >> incPC

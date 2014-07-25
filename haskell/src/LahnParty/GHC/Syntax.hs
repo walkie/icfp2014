@@ -5,23 +5,23 @@ import Data.Word
 data MovArgument = 
       MRegister RegisterName
     | MIndirectRegister GPRegisterName
-    | MDataMemory Word8
+    | MDataMemory Word8 deriving (Show)
     
 data DestArgument = 
       DRegister GPRegisterName 
     | DIndirectRegister GPRegisterName
-    | DDataMemory Word8
+    | DDataMemory Word8 deriving (Show)
 
 data SrcArgument = 
       SRegister RegisterName
     | SIndirectRegister GPRegisterName
     | SConstant   Word8 
-    | SDataMemory Word8 
+    | SDataMemory Word8 deriving (Show)
 
-data TArgument = TConstant Word8
+data TArgument = TConstant Word8 deriving (Show)
 
-data GPRegisterName = A | B | C | D | E | F | G | H 
-data RegisterName =  GP GPRegisterName | PC
+data GPRegisterName = A | B | C | D | E | F | G | H deriving (Show)
+data RegisterName =  GP GPRegisterName | PC deriving (Show)
 
 data Instructions = 
       MOV MovArgument SrcArgument 
@@ -38,6 +38,7 @@ data Instructions =
     | JEQ TArgument SrcArgument SrcArgument
     | JGT TArgument SrcArgument SrcArgument
     | INT Interrupt
-    | HLT
+    | HLT deriving (Show)
 
 data Interrupt = Int0 | Int1 | Int2 | Int3 | Int4 | Int5 | Int6 | Int7 
+    deriving (Show)

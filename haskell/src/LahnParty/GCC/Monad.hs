@@ -7,6 +7,7 @@ import Control.Monad.State.Strict
 
 import LahnParty.GCC.Syntax
 import LahnParty.GCC.State
+import LahnParty.GCC.Error
 
 
 --
@@ -84,24 +85,11 @@ popFramePtr = popC >>= toFramePtr
 
 -- ** Manipulate environment
 
-{-
--- | Traversal to access a particular slot in the environment.
-slot :: Applicative f => Int -> Int -> (Maybe Value -> f (Maybe Value)) -> GCC -> f GCC
-slot n i = env . ix n . ix i
--}
-
 -- | Get a value from the environment.
 envGet :: Monad m => Int -> Int -> GCCM m Value
-envGet n i = do
-  e <- use env
-  case _envGet n i e of
-    Right v  -> return v
-    Left err -> throwError (EnvError err)
+envGet n i = use env >>= getAt n >>= toValues >>= getAt i
 
 -- | Set a value in the environment.
 envSet :: Monad m => Int -> Int -> Value -> GCCM m ()
-envSet n i v = do
-  e <- use env
-  case _envSet n i v e of
-    Right e' -> env .= e'
-    Left err -> throwError (EnvError err)
+envSet n i v = env <~ (use env >>= updateAt n inFrame)
+  where inFrame f = toValues f >>= setAt i v >>= return . Values

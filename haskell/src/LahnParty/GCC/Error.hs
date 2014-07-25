@@ -14,12 +14,34 @@ import LahnParty.GCC.State
 
 -- | Errors that can occur during execution of a GCC program.
 data Error
-  =  EnvError     EnvError
-  |  StackError   StackError
+  =  StackError   StackError
   |  TypeError    String
   |  ControlError String
+  |  FrameError   String
+  |  OutOfBounds
   |  DivByZero
   deriving (Eq,Show)
+
+-- | Errors by underflowing stacks.
+data StackError = EmptyDataStack | EmptyControlStack
+  deriving (Eq,Show)
+
+-- | Get an element in a list, raising an error if the index is out of bounds.
+getAt :: MonadError Error m => Int -> [a] -> m a
+getAt i as
+    | i >= 0 && i < length as = return (as !! i)
+    | otherwise               = throwError OutOfBounds
+
+-- | Update an element in a list, raising an error if the index is out of bounds.
+updateAt :: MonadError Error m => Int -> (a -> m a) -> [a] -> m [a]
+updateAt i f as
+    | i >= 0 && i < length as = f a >>= \a' -> return (h ++ a' : t)
+    | otherwise               = throwError OutOfBounds
+  where (h,a:t) = splitAt i as
+
+-- | Set an element in a list, raising an error if the index is out of bounds.
+setAt :: MonadError Error m => Int -> a -> [a] -> m [a]
+setAt i = updateAt i . const . return
 
 -- | Raise an error corresponding to an unmet expectation.
 raise :: (MonadError Error m, Show x) => (String -> Error) -> String -> x -> m a
@@ -55,3 +77,14 @@ toReturn c          = raise ControlError "return" c
 toFramePtr :: MonadError Error m => Control -> m Env
 toFramePtr (FramePtr e) = return e
 toFramePtr c            = raise ControlError "frame pointer" c
+
+-- | Get the environment frame as a list of values, or raise a frame error.
+toValues :: MonadError Error m => Frame -> m [Value]
+toValues (Values vs) = return vs
+toValues f           = raise FrameError "values" f
+
+-- | Get the environment frame as a dummy frame description,
+--   or raise a frame error.
+toDummy :: MonadError Error m => Frame -> m Int
+toDummy (Dummy n) = return n
+toDummy f         = raise FrameError "dummy frame" f

@@ -6,6 +6,7 @@ import Control.Monad.Except
 
 import LahnParty.GCC.Syntax
 import LahnParty.GCC.State
+import LahnParty.GCC.Error
 import LahnParty.GCC.Monad
 
 
@@ -70,7 +71,7 @@ inst (AP  n) = do (faddr,fenv) <- popClos
                   args <- replicateM n popD
                   use env >>= pushC . FramePtr
                   use pc  >>= pushC . Return
-                  env .= newFrameWith args : fenv
+                  env .= Values args : fenv
                   pc  .= faddr
 
 inst RTN     = do raddr <- popReturn

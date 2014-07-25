@@ -60,6 +60,20 @@ inst JOIN      = popJoin >>= setPC
 inst (SEL t f) = do b <- popInt
                     use pc >>= pushC . Join . (+1)
                     if b == 0
-                      then setPC f
-                      else setPC t
+                      then pc .= f
+                      else pc .= t
 
+-- Function calls
+inst (LDF a) = use env >>= pushD . Clos a >> incPC
+
+inst (AP  n) = do (faddr,fenv) <- popClos
+                  args <- replicateM n popD
+                  use env >>= pushC . FramePtr
+                  use pc  >>= pushC . Return
+                  env .= newFrameWith args : fenv
+                  pc  .= faddr
+
+inst RTN     = do raddr <- popReturn
+                  renv  <- popFramePtr
+                  env .= renv
+                  pc  .= raddr

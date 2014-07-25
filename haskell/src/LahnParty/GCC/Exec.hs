@@ -127,3 +127,7 @@ inst (TRAP n) = do
   
 -- Pascal extensions
 inst (ST n i) = popD >>= envSet n i >> incPC
+  
+-- Debug extensions
+inst DBUG = throwError $ Unimplemented "DBUG"
+inst BRK  = throwError $ Unimplemented "BRK"

@@ -20,6 +20,7 @@ data Error
   |  FrameError   String
   |  OutOfBounds
   |  DivByZero
+  |  Unimplemented String
   deriving (Eq,Show)
 
 -- | Errors by underflowing stacks.

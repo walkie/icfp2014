@@ -12,4 +12,5 @@ library
   exposed-modules:
     LahnParty.GCC.Syntax,
     LahnParty.GCC.State,
-    LahnParty.GCC.Machine
+    LahnParty.GCC.Monad,
+    LahnParty.GCC.Exec

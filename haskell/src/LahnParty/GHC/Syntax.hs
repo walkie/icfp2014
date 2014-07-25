@@ -1,4 +1,4 @@
-module Lahnparty.GHC.Syntax where
+module LahnParty.GHC.Syntax where
 
 import Data.Word
 

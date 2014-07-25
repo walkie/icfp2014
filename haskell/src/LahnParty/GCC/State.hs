@@ -21,6 +21,18 @@ data Value
 
 
 --
+-- * Stacks
+--
+
+-- | A stack.
+type Stack a = [a]
+
+-- | Errors by underflowing stacks.
+data StackError = EmptyDataStack | EmptyControlStack
+  deriving (Eq,Show)
+
+
+--
 -- * Environment
 --
 
@@ -55,9 +67,6 @@ envSet fn sn v (f:fs) = fmap (f:) $ envSet (fn-1) sn v fs
 --
 -- * Program state
 --
-
--- | A stack.
-type Stack a = [a]
 
 -- | State of the GCC machine.
 data GCC = GCC {

@@ -63,4 +63,7 @@ data GCC = GCC {
   _env    :: Env
 }
 
+initGCC :: GCC
+initGCC = GCC 0 [] [Stop] []
+
 $(makeLenses ''GCC)

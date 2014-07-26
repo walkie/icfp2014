@@ -18,8 +18,9 @@ data Error
   |  TypeError    String
   |  ControlError String
   |  FrameError   String
-  |  OutOfBounds
   |  DivByZero
+  |  IllegalPC
+  |  OutOfBounds
   |  Unimplemented String
   deriving (Eq,Show)
 

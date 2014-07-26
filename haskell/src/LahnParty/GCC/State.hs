@@ -26,7 +26,7 @@ data Value
   =  Lit  Int
   |  Pair Value Value
   |  Clos Addr  Env
-  deriving (Eq,Show)
+  deriving (Eq,Read,Show)
 
 -- | Elements in the control stack.
 data Control
@@ -34,7 +34,7 @@ data Control
   |  Return   Addr
   |  FramePtr Env
   |  Stop
-  deriving (Eq,Show)
+  deriving (Eq,Read,Show)
 
 
 --
@@ -45,7 +45,7 @@ data Control
 --   A dummy frame is an uninitialized environment frame.
 data Frame = Values [Value]
            | Dummy  Int
-  deriving (Eq,Show)
+  deriving (Eq,Read,Show)
 
 -- | An environment is a list of frames.
 type Env = [Frame]
@@ -61,7 +61,7 @@ data GCC = GCC {
   _stackD :: DataStack,
   _stackC :: ControlStack,
   _env    :: Env
-} deriving (Eq,Show)
+} deriving (Eq,Read,Show)
 
 initGCC :: GCC
 initGCC = GCC 0 [] [] []

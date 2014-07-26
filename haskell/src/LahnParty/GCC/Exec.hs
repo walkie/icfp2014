@@ -3,6 +3,7 @@ module LahnParty.GCC.Exec where
 
 import Control.Lens
 import Control.Monad.Except
+import Control.Monad.Identity
 import Control.Monad.State.Strict
 import Data.Array
 
@@ -16,10 +17,15 @@ import LahnParty.GCC.Monad
 -- * Program execution
 --
 
--- | Run a program from start to stop, returning the resulting state.
-runProgram :: Monad m => Program -> m (Maybe Error, GCC)
-runProgram p = liftM maybeError $ runStateT (runExceptT (untilStop p)) initGCC
-  where maybeError = over _1 (either Just (const Nothing))
+-- | Run a program from start to stop, returning the resulting state and
+--   any error that occured.
+runProgramT :: Monad m => Program -> m (Either Error GCC)
+runProgramT p = runExceptT (execStateT (untilStop p) initGCC)
+
+-- | Run a program from start to stop, returning the resulting state and
+--   any error that occured.
+runProgram :: Program -> Either Error GCC
+runProgram = runIdentity . runProgramT
 
 -- | Execute one step of a program.
 step :: Monad m => Program -> GCCM m ()
@@ -30,7 +36,10 @@ step p = do
   
 -- | Run a program until it stops.
 untilStop :: Monad m => Program -> GCCM m ()
-untilStop p = do stop <- isStop; unless stop (step p)
+untilStop p = do stop <- isStop
+                 unless stop $ do
+                   step p
+                   untilStop p
 
 
 --
@@ -40,7 +49,7 @@ untilStop p = do stop <- isStop; unless stop (step p)
 -- | Apply a function to the first two integers popped off the data stack,
 --   pushing the result.
 intOp :: Monad m => (Int -> Int -> Int) -> GCCM m ()
-intOp f = do a <- popInt; b <- popInt; pushD (Lit (f a b))
+intOp f = do b <- popInt; a <- popInt; pushD (Lit (f a b))
 
 -- | Apply a function to the first two integers popped off the data stack,
 --   push 1 if the result is true, otherwise 0.
@@ -76,7 +85,7 @@ execInst ATOM = do
   incPC
 
 -- Pairs
-execInst CONS = liftM2 Pair popD popD >> incPC
+execInst CONS = liftM2 Pair popD popD >>= pushD >> incPC
 execInst CAR  = popPair >>= pushD . fst >> incPC
 execInst CDR  = popPair >>= pushD . snd >> incPC
 
@@ -101,12 +110,14 @@ execInst (AP n) = do
   pc  .= faddr
 
 execInst RTN = do
-  stop <- isStop
-  unless stop $ do
-    raddr <- popReturn
-    renv  <- popFramePtr
-    env .= renv
-    pc  .= raddr
+  stop <- isEmptyC
+  if stop
+    then pushC Stop
+    else do
+      raddr <- popReturn
+      renv  <- popFramePtr
+      env .= renv
+      pc  .= raddr
 
 -- Recursive environment function calls
 execInst (DUM n) = env %= (Dummy n :) >> incPC

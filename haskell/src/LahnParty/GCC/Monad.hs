@@ -15,7 +15,7 @@ import LahnParty.GCC.Error
 --
 
 -- | GCC execution monad.
-type GCCM m a = ExceptT Error (StateT GCC m) a
+type GCCM m a = StateT GCC (ExceptT Error m) a
 
 
 -- ** Manipulate program counter
@@ -69,6 +69,10 @@ popC = do
   case s of
     (a:as) -> stackC .= as >> return a
     _      -> throwError (StackError EmptyControlStack)
+
+-- | True if the control stack is empty.
+isEmptyC :: Monad m => GCCM m Bool
+isEmptyC = liftM null (use stackC)
 
 -- | True if the top of the control stack is the Stop symbol.
 isStop :: Monad m => GCCM m Bool

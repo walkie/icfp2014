@@ -51,6 +51,8 @@ untilStop m = do stop <- isStop; unless stop (m >> untilStop m)
 -- | Run a program until it stops, printing the state at each step.
 trace :: Program -> GCCM IO ()
 trace p = untilStop $ do
+            i <- use pc
+            unless (inRange (bounds p) i) $ throwError IllegalPC
             liftIO $ putStrLn (replicate 40 '-')
             get >>= liftIO . putStr . prettyGCC p
             step p

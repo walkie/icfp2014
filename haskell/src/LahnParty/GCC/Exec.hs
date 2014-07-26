@@ -35,7 +35,7 @@ traceProgram p = do
   putStrLn (prettyProgram p)
   res <- runGCCM (trace p) initGCC
   putStrLn (replicate 40 '-')
-  putStrLn (prettyResult res)
+  putStrLn (prettyResult p res)
 
 -- | Execute one step of a program.
 step :: Monad m => Program -> GCCM m ()
@@ -52,7 +52,7 @@ untilStop m = do stop <- isStop; unless stop (m >> untilStop m)
 trace :: Program -> GCCM IO ()
 trace p = untilStop $ do
             liftIO $ putStrLn (replicate 40 '-')
-            get >>= liftIO . putStr . prettyGCC
+            get >>= liftIO . putStr . prettyGCC p
             step p
 
 

@@ -26,8 +26,8 @@ prettyProgram p = unlines (map (numberedLine k show) (assocs p))
   where k = (length . show . snd . bounds) p
 
 -- | Pretty print the result of a program execution.
-prettyResult :: Either Error GCC -> String
-prettyResult = either show prettyGCC
+prettyResult :: Program -> Either Error GCC -> String
+prettyResult p = either show (prettyGCC p)
 
 -- | Pretty print a stack using the given function for pretty printing its
 --   elements.
@@ -70,12 +70,13 @@ prettyEnv :: Int -> Env -> String
 prettyEnv k = unlines . map (prettyFrame k) . zip [0..]
 
 -- | Pretty print a program execution state.
-prettyGCC :: GCC -> String
-prettyGCC (GCC pc ds cs env) = unlines 
-  ["PC: " ++ show pc, "",
-   "== Data Stack ==",    prettyStackD ds,
-   "== Control Stack ==", prettyStackC cs,
-   "== Environment ==",   prettyEnv 0 env]
+prettyGCC :: Program -> GCC -> String
+prettyGCC p (GCC pc ds cs env) = unlines 
+    [padLeft k (show pc) ++ ": " ++ show (p ! pc), "",
+     "== Data Stack ==",    prettyStackD ds,
+     "== Control Stack ==", prettyStackC cs,
+     "== Environment ==",   prettyEnv 0 env]
+  where k = (length . show . snd . bounds) p
 
 -- | Format a numbered line.
 numberedLine :: Int -> (a -> String) -> (Int, a) -> String

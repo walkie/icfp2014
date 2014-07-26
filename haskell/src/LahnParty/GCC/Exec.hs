@@ -57,7 +57,7 @@ boolOp :: Monad m => (Int -> Int -> Bool) -> GCCM m ()
 boolOp f = intOp (\a b -> if f a b then 1 else 0)
 
 -- | Execute a single instruction.
-execInst :: Monad m => Inst -> GCCM m ()
+execInst :: Monad m => Inst Addr -> GCCM m ()
 
 -- Load
 execInst (LDC n)  = pushD (Lit n) >> incPC

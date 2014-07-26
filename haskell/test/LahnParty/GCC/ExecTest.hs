@@ -9,9 +9,9 @@ import LahnParty.GCC
 -- * Test suite
 
 execTests = testSuite "GCC execution tests" [
-    test_empty,
-    test_push, test_add,
-    test_arithmetic
+    test_fall, test_stop,
+    test_push, test_add, test_arithmetic,
+    test_logic, test_atom
   ]
 
 
@@ -41,7 +41,7 @@ assertStackCD c d p = case run p of
 
 -- * Tests
 
-test_fall = testName "fall" $ assertError IllegalPC [] []
+test_fall = testName "fall" $ assertError IllegalPC []
 test_stop = testName "stop" $ assertStackCD [Stop] [] [RTN]
 
 test_push = testName "push" $ assertStackD [Lit 3, Lit 2] [LDC 2, LDC 3, RTN]
@@ -50,6 +50,17 @@ test_add  = testName "add"  $ assertStackD [Lit (-3)] [LDC 2, LDC (-5), ADD, RTN
 test_arithmetic = testName "arithmetic" $ assertStackD [Lit 10]
   [LDC 2, LDC 3, ADD, -- 5
    LDC 4, MUL,        -- 20
-   LDC 9, LDC 4, SUB, -- 20, 5
-   LDC 3, SUB,        -- 20, 2
+   LDC 9, LDC 4, SUB, -- 20 5
+   LDC 3, SUB,        -- 20 2
    DIV  , RTN]        -- 10
+
+test_logic = testName "logic" $ assertStackD (map Lit [1,0,1,1,0])
+  [LDC 5,    LDC 7,    CGTE, -- 0
+   LDC 5,    LDC (-7), CGTE, -- 0 1
+   LDC 3,    LDC 3,    CGTE, -- 0 1 1
+   LDC (-3), LDC (-3), CGT,  -- 0 1 1 0
+   LDC 5,    LDC 5,    CEQ,  -- 0 1 1 0 1
+   RTN]
+
+test_atom = testName "atom" $ assertStackD [Lit 0, Lit 1]
+  [LDC 4, ATOM, LDC 5, LDC 6, CONS, ATOM, RTN]

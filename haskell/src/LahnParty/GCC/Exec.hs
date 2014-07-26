@@ -49,7 +49,7 @@ untilStop p = do stop <- isStop
 -- | Apply a function to the first two integers popped off the data stack,
 --   pushing the result.
 intOp :: Monad m => (Int -> Int -> Int) -> GCCM m ()
-intOp f = do a <- popInt; b <- popInt; pushD (Lit (f a b))
+intOp f = do b <- popInt; a <- popInt; pushD (Lit (f a b))
 
 -- | Apply a function to the first two integers popped off the data stack,
 --   push 1 if the result is true, otherwise 0.
@@ -85,7 +85,7 @@ execInst ATOM = do
   incPC
 
 -- Pairs
-execInst CONS = liftM2 Pair popD popD >> incPC
+execInst CONS = liftM2 Pair popD popD >>= pushD >> incPC
 execInst CAR  = popPair >>= pushD . fst >> incPC
 execInst CDR  = popPair >>= pushD . snd >> incPC
 

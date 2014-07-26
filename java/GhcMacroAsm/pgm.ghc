@@ -1,0 +1,44 @@
+int 3 			; get ghost id 
+int 5 			; get ghost coords 
+mov [200], a 
+mov [201], b 
+int 3 			; get ghost id 
+int 6 			; get ghost status 
+mov [202], b 
+mov a, [200] 
+mov b, [201] 
+dec b 			; y-1 
+int 7 			; get map 
+mov [0], a 
+mov a, [200] 
+add b, 2 			; y-1 is already in b, so add 2 to make it y+1 
+int 7 			; get map 
+mov [2], a 
+mov a, [200] 
+mov b, [201] 
+dec a 			; x-1 
+int 7 			; get map 
+mov [3], a 
+mov a, [200] 
+mov b, [201] 
+inc a 			; x+1 
+int 7 			; get map 
+mov [1], a 
+mov h, [202] 			; load direction in h 
+mov [203], [h] 			; load content of left tile into tile-left 
+dec h 			; get front tile: decrement h 
+and h, 3 			; and and it with 3 
+mov [204], [h] 			; load content of front tile into tile-front 
+jgt 39, [204], 0 			; the tile on the left is not a wall -> rotate left and go there 
+jeq 34, [203], 0 
+hlt 			; halt 
+add [202], 1 			; increment direction 
+and [202], 3 			; direction has to be <= 3 
+mov a, [202] 
+int 0 			; set direction 
+mov pc, 26 			; emulated jmp 
+mov a, [202] 
+add a, 3 			; rotate left 
+and a, 3 			; rotate left, dir has to be <= 3 
+int 0 			; set direction 
+hlt 			; halt 

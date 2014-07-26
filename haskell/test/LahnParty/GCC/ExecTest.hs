@@ -41,7 +41,8 @@ assertStackCD c d p = case run p of
 
 -- * Tests
 
-test_empty = testName "empty" $ assertStackCD [Stop] [] [RTN]
+test_fall = testName "fall" $ assertError IllegalPC [] []
+test_stop = testName "stop" $ assertStackCD [Stop] [] [RTN]
 
 test_push = testName "push" $ assertStackD [Lit 3, Lit 2] [LDC 2, LDC 3, RTN]
 test_add  = testName "add"  $ assertStackD [Lit (-3)] [LDC 2, LDC (-5), ADD, RTN]

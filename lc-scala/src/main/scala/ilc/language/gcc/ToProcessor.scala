@@ -11,11 +11,20 @@ trait BasicDefinitions {
   outer: Syntax =>
 
   trait Instr extends Product {
-    def showArgs = productIterator.toList mkString " "
-    def show = {
-      val instrName = this.getClass().getSimpleName().stripSuffix("$")
-      s"$instrName ${showArgs}"
+    def showArgs(forHaskell: Boolean) = productIterator.toList mkString " "
+    def show(forHaskell: Boolean = false) = {
+      def instrName = this.getClass().getSimpleName().stripSuffix("$")
+      val args = showArgs(forHaskell)
+      val sep = if (args.nonEmpty) " " else ""
+      s"$instrName$sep$args"
     }
+
+    //Is this a primitive which consumes its arguments from the stack?
+    def isPrimFun: Boolean = false
+  }
+
+  trait PrimInstr extends Instr {
+    override def isPrimFun = true
   }
   type Block = List[Instr]
 
@@ -53,24 +62,41 @@ trait Instructions {
     )
 
   case class LD(idx: DeBrujinIdx) extends Instr {
-    override def showArgs = s"${idx.n} ${idx.i}\t\t; var ${idx.v}"
+    override def showArgs(forHaskell: Boolean) = s"${idx.n} ${idx.i}${if (forHaskell) "" else s"\t\t; var ${idx.v}"}"
   }
   case class DUM(n: Int) extends Instr
   case class LDC(n: Int) extends Instr
   case class RAP(n: Int) extends Instr
   case object RTN extends Instr
 
-  case class LDF(v: Var) extends Instr {
+  case class LDF(target: Either[Var, Int]) extends Instr {
     //XXX distinguish top labels (code pointers) from the top stack frame (which is a normal one).
-    validateTopVar(v)
-    override def showArgs = v.getName.toString
+    target match {
+      case Left(v) => validateTopVar(v)
+      case _ =>
+    }
+
+    override def showArgs(forHaskell: Boolean) =
+      target match {
+      case Left(v) =>
+        assert(!forHaskell)
+        v.getName.toString
+      case Right(i) =>
+        assert(forHaskell)
+        i.toString
+    }
+  }
+
+  object LDF {
+    def apply(v: Var): LDF = LDF(Left(v))
+    def apply(i: Int): LDF = LDF(Right(i))
   }
 
   //Integer instructions
-  case object ADD extends Instr
-  case object SUB extends Instr
-  case object MUL extends Instr
-  case object DIV extends Instr
+  case object ADD extends PrimInstr
+  case object SUB extends PrimInstr
+  case object MUL extends PrimInstr
+  case object DIV extends PrimInstr
 
 }
 
@@ -110,19 +136,51 @@ trait ToProcessor extends BasicDefinitions with TopLevel with Instructions {
     //Integers
     case LiteralInt(n) =>
       List(LDC(n))
-    case App(App(PlusInt, a), b) =>
-      toProc(b, frames) ++
-      toProc(a, frames) ++
+    case Plus =>
       List(ADD)
+    case Minus =>
+      List(SUB)
+    case Mult =>
+      List(MUL)
+    case Div =>
+      List(DIV)
 
     //Core: lambda-calculus with letrec*.
     /* TODOs:
      * - Add more primitives
      * - Test non-top-level LetRecStar
      */
-    case App(f, arg) =>
-      val arity = 1 //XXX generalize!
-      toProc(arg, frames) ++ toProc(f, frames) ++ List(AP(arity))
+    case App(operator, operand) =>
+      //Adapted from A-normalization.
+      def collectApps(t: Term, acc: List[Term]): List[Term] = t match {
+        case App(s, t) => collectApps(s, t :: acc)
+        case _ =>
+          //The function must be last!
+          acc ++ (t :: Nil)
+      }
+      //Special handling for nested applications
+      //Note that this is very syntactic, and that's bad: if the user already inserted a binding for a partial application, as in:
+      // val r1 = f arg1 arg2
+      // val r2 = r1 arg3
+      //we don't want to inline r1 into r2, because that might lead to work duplication.
+      //XXX: This works if programs are in eta-long normal form.
+      val subNodes =
+        collectApps(operator, operand :: Nil)
+      val fun = subNodes.last
+      val operands = subNodes.init
+      def descend(v: Term) = toProc(v, frames)
+
+      val arity = operands.length
+      val operandsCode = operands flatMap descend
+      val funCode = descend(fun)
+      val isPrim = funCode.length == 1 && funCode.head.isPrimFun
+      val extraApply =
+        if (isPrim)
+          Nil
+        else
+          List(AP(arity))
+      operandsCode ++ funCode ++ extraApply
+      //toProc(operand, frames) ++ toProc(operator, frames)
 
     //Maybe the current "top-level" handling should instead be used just for letrec*?
     case Abs(variable, body) =>
@@ -150,7 +208,7 @@ trait ToProcessor extends BasicDefinitions with TopLevel with Instructions {
   }
 
   def toProcBase(t: Term) = toProc(t, Nil) ++ List(RTN)
-  def toProg(t: Term) = {
+  def toProg(t: Term): (Block, Map[Var, Int]) = {
     reset()
     val main = toProcBase(t)
     val blocks = main :: topBlocks
@@ -164,8 +222,24 @@ trait ToProcessor extends BasicDefinitions with TopLevel with Instructions {
       (el, n) <- trav
     } yield s"$n: $el") mkString "\n")
   //def show(b: Block) = showTraversable(b.zipWithIndex)
+
   def showProg(t: Term) = {
     val (prog, labels) = toProg(t)
-    s"${showTraversable(prog map (_ show) zipWithIndex)}\n${showTraversable(labels)}"
+    s"${showTraversable(prog map (_ show()) zipWithIndex)}\n${showTraversable(labels)}\n${toHaskell(prog, labels)}"
+  }
+
+  def resolveSymbolic(instrs: Block, labelSizes: Map[Var, Int]) = {
+    instrs map {
+      case LDF(Left(v)) => LDF(labelSizes(v))
+      case op => op
+    }
+  }
+
+  /**
+   * Convert to a form which can be Read in Haskell with a "natural" definition of instructions
+   * (the one used elsewhere in this repo).
+   */
+  def toHaskell(block: Block, labelSizes: Map[Var, Int]) = {
+    resolveSymbolic(block, labelSizes) map (_ show true) mkString ("[", ",\n", "]")
   }
 }

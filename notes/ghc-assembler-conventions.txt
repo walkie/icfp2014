@@ -8,29 +8,41 @@ everything is case-insensitive.
 blank lines are allowed
 Lines end with a newline. Spaces and tabs are whitespace.
 
+Instructions were tested to look like this: (_ is a whitespace symbol for illustration purposes)
+
+ins_a,_b
+
 --- program structure
 
 $DATA:			; data segment. contains named constants
-'wall = 0		; map id of wall tile is 0
+'wall 0		; map id of wall tile is 0
 
 $VAR:			; variable segment. contains named memory locations
-.stack = 255
-.stack-h = 254
-.stack-g = 253
-.stack-f = 252
-.stack-e = 251
-.stack-d = 250
-.stack-c = 249
-.stack-b = 248
-.stack-a = 247
+.stack 255
+.stack-h 254
+.stack-g 253
+.stack-f 252
+.stack-e 251
+.stack-d 250
+.stack-c 249
+.stack-b 248
+.stack-a 247
 
 $PGM:			; main program
 ...
 hlt
 
+
+
+
+****** removed subroutines. please write them in the main program.
+
+
 $SR subroutine1-name:	; subroutines
 ...
 $SR subroutine2-name:
+
+
 
 --- some useful(?) memory conventions:
 [255] contains the stack pointer
@@ -67,6 +79,8 @@ RET:
 MOV pc, 255
 returns from a subroutine. registers have to be popped off the stack manually!
 
+******* removed vvv
+
 for these functions, use some way to get a unique number for assigning label values
 IF (a <= b) THEN {instructions}:
 jgt "ifcase{uniquenumber}", a, b
@@ -93,6 +107,7 @@ SUB x, -y					; negative constants
 SUB x, (255-y)
 negative constants are 255-constant
 
+*** removed ^^^^
 
 --- labels:
 "label":

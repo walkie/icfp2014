@@ -31,8 +31,12 @@ extends base.Syntax
   case object Eq extends IntCmpOp
   case object Gt extends IntCmpOp
   case object Gte extends IntCmpOp
-
+  
   implicit def intToTerm(n: Int): Term = LiteralInt(n)
+
+  case object Not extends Term {
+    override lazy val getType: Type = BooleanType =>: BooleanType
+  }
 }
 
 trait Syntax
@@ -51,6 +55,7 @@ trait SyntaxSugar
   with inference.LetSyntaxSugar
   with inference.LetRecUntypedSyntax
   with inference.LetRecInference
+  with products.StdLib
 {
   implicit def intToUTerm(n: Int): UntypedTerm = asUntyped(LiteralInt(n))
   def letrec(pairs: (Symbol, UntypedTerm)*)
@@ -59,8 +64,6 @@ trait SyntaxSugar
       case (sym, t) => (sym.name, t)
     }, bodyName, body)
   }
-  //Force implicit conversions.
-  def asTerm(t: Term) = t
 
   type UT = UntypedTerm
   implicit class UTermOps[T <% UT](a: T) {
@@ -78,19 +81,27 @@ trait SyntaxSugar
     def =!=(b: UT) = not(a === b)
   }
 
-  def not(a: UT) = 1 - a
+  def not(a: UT) = Not(a)
 
   def if_(cond: UntypedTerm)(thn: UntypedTerm) = ProvideElse(cond, thn)
   case class ProvideElse(cond: UntypedTerm, thn: UntypedTerm) {
     def else_(els: Term): UntypedTerm = asUntyped(IfThenElse)(cond, '_ ->: thn, '_ ->: els)
   }
-  
+
   // other syntax for functions
   def lam(args: Symbol*)(body: UntypedTerm) =
     args.foldRight(body)(_ ->: _)
-  
+
   // creates a pair to be used immediately in letrec like
   //   letrec(fun('go)('n) { 'to('n + 1) })
   def fun(name: Symbol)(args: Symbol*)(body: UntypedTerm) =
     (name -> args.foldRight(body)(_ ->: _))
+
+  implicit def consSyntax[A <% UT, B <% UT](scalaPair: (A, B)): UntypedTerm =
+    pair(scalaPair._1, scalaPair._2)
+
+  implicit class PairOps[T <% UT](t: T) {
+    def left = proj1(t)
+    def right = proj2(t)
+  }
 }

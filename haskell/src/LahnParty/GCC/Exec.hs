@@ -85,7 +85,7 @@ execInst ATOM = do
   incPC
 
 -- Pairs
-execInst CONS = liftM2 Pair popD popD >>= pushD >> incPC
+execInst CONS = do b <- popD; a <- popD; pushD (Pair a b); incPC
 execInst CAR  = popPair >>= pushD . fst >> incPC
 execInst CDR  = popPair >>= pushD . snd >> incPC
 

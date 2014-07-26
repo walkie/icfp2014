@@ -12,6 +12,7 @@ execTests = testSuite "GCC execution tests" [
     test_fall, test_stop,
     test_push, test_add, test_arithmetic,
     test_logic, test_atom,
+    test_cons, test_car, test_cdr,
     test_branch
   ]
 
@@ -65,6 +66,15 @@ test_logic = testName "logic" $ assertStackD (map Lit [1,0,1,1,0])
 
 test_atom = testName "atom" $ assertStackD [Lit 0, Lit 1]
   [LDC 4, ATOM, LDC 5, LDC 6, CONS, ATOM, RTN]
+
+test_cons = testName "cons" $ assertStackD [Pair (Lit 1) (Pair (Lit 2) (Lit 3))]
+  [LDC 1, LDC 2, LDC 3, CONS, CONS, RTN]
+
+test_car = testName "car" $ assertStackD [Lit 1]
+  [LDC 1, LDC 2, LDC 3, CONS, CONS, CAR, RTN]
+
+test_cdr = testName "cdr" $ assertStackD [Pair (Lit 2) (Lit 3)]
+  [LDC 1, LDC 2, LDC 3, CONS, CONS, CDR, RTN]
 
 test_branch = testName "branch" $ assertStackD [Lit 3, Lit 2]
   {- 0: -} [LDC 1, SEL 5 7, LDC 0, SEL 5 7, RTN,

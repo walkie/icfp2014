@@ -11,6 +11,7 @@ library
   build-depends:
     base, array, lens, mtl >= 2.2
   exposed-modules:
+    LahnParty.GCC,
     LahnParty.GCC.Syntax,
     LahnParty.GCC.State,
     LahnParty.GCC.Error,

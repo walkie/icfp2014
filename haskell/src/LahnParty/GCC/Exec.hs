@@ -11,6 +11,7 @@ import LahnParty.GCC.Syntax
 import LahnParty.GCC.State
 import LahnParty.GCC.Error
 import LahnParty.GCC.Monad
+import LahnParty.GCC.Pretty
 
 
 --
@@ -27,6 +28,15 @@ runProgramT p = runGCCM (untilStop (step p)) initGCC
 runProgram :: Program -> Either Error GCC
 runProgram = runIdentity . runProgramT
 
+-- | Run a program from start to stop, printing the state at each step.
+traceProgram :: Program -> IO ()
+traceProgram p = do
+  putStrLn "== Program =="
+  putStrLn (prettyProgram p)
+  res <- runGCCM (trace p) initGCC
+  putStrLn (replicate 40 '-')
+  putStrLn (prettyResult res)
+
 -- | Execute one step of a program.
 step :: Monad m => Program -> GCCM m ()
 step p = do
@@ -37,6 +47,13 @@ step p = do
 -- | Run a program until it stops.
 untilStop :: Monad m => GCCM m () -> GCCM m ()
 untilStop m = do stop <- isStop; unless stop (m >> untilStop m)
+
+-- | Run a program until it stops, printing the state at each step.
+trace :: Program -> GCCM IO ()
+trace p = untilStop $ do
+            liftIO $ putStrLn (replicate 40 '-')
+            get >>= liftIO . putStr . prettyGCC
+            step p
 
 
 --

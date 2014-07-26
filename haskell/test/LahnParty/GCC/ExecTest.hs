@@ -13,7 +13,8 @@ execTests = testSuite "GCC execution tests" [
     test_push, test_add, test_arithmetic,
     test_logic, test_atom,
     test_cons, test_car, test_cdr,
-    test_branch
+    test_branch,
+    test_call
   ]
 
 
@@ -67,7 +68,8 @@ test_logic = testName "logic" $ assertStackD (map Lit [1,0,1,1,0])
 test_atom = testName "atom" $ assertStackD [Lit 0, Lit 1]
   [LDC 4, ATOM, LDC 5, LDC 6, CONS, ATOM, RTN]
 
-test_cons = testName "cons" $ assertStackD [Pair (Lit 1) (Pair (Lit 2) (Lit 3))]
+test_cons = testName "cons" $ assertStackD
+  [Pair (Lit 1) (Pair (Lit 2) (Lit 3))]
   [LDC 1, LDC 2, LDC 3, CONS, CONS, RTN]
 
 test_car = testName "car" $ assertStackD [Lit 1]
@@ -80,3 +82,10 @@ test_branch = testName "branch" $ assertStackD [Lit 3, Lit 2]
   {- 0: -} [LDC 1, SEL 5 7, LDC 0, SEL 5 7, RTN,
   {- 5: -}  LDC 2, JOIN,
   {- 7: -}  LDC 3, JOIN]
+
+test_call = testName "function call" $ assertStackD
+  [Lit 4, Pair (Lit 3) (Pair (Lit 1) (Lit 2))]
+  {- 0: -} [LDC 1, LDC 2, CONS, LDC 3, -- (1,2) 3
+  {- 4: -}  LDF 8, AP 2,               -- call concatenative cons fun
+  {- 6: -}  LDC 4, RTN,                -- (3,(1,2)) 4, exit
+  {- 8: -}  LD 0 1, LD 0 0, CONS, RTN] -- concatenative cons fun definition

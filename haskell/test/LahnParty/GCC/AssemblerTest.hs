@@ -18,13 +18,13 @@ natsubDef =
 -- | Assembly program calling natsub.
 natsubCall :: Assembly
 natsubCall =
-  ("entry", [LDC 5, LDC 4, LDF "natsub", AP 2,
-             LDC 4, LDC 5, LDF "natsub", AP 2, RTN]) : natsubDef
+  ("entry", [LDC 7, LDC 4, LDF "natsub", AP 2,
+             LDC 4, LDC 7, LDF "natsub", AP 2, RTN]) : natsubDef
 
 test_assemble = testName "assemble" $
   assemble natsubCall @?= program
-  {-  0 -} [LDC 5, LDC 4, LDF 9, AP 2,
-  {-  4 -}  LDC 4, LDC 5, LDF 9, AP 2, RTN,
+  {-  0 -} [LDC 7, LDC 4, LDF 9, AP 2,
+  {-  4 -}  LDC 4, LDC 7, LDF 9, AP 2, RTN,
   {-  9 -}  LD 0 0, LD 0 1, SUB, LDC 0, CGTE, SEL 16 20, RTN,
   {- 16 -}  LD 0 0, LD 0 1, SUB, JOIN,
   {- 20 -}  LDC 0, JOIN]

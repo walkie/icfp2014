@@ -1,8 +1,17 @@
 
 module LahnParty.GCC.Syntax where
 
+import Data.Array
+
 -- | Absolute instruction address.
 type Addr = Int
+
+-- | A program is an array of instructions.
+type Program = Array Addr Inst
+
+-- | Smart constructor to build a program from a list of instructions.
+program :: [Inst] -> Program
+program is = listArray (0, length is - 1) is
 
 -- | GCC instruction set.
 data Inst

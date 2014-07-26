@@ -1,9 +1,9 @@
 {-- 
  - Simulates the Operation of the GHC microcontroller
  --}
-module LahnParty.GHC.Simulation where
+module LahnParty.GHC.Machine where
 
-import Lahnparty.GHC.Syntax
+import LahnParty.GHC.Syntax
 import Data.Array.IArray
 import Data.Word
 import Data.Bits

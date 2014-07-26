@@ -3,6 +3,7 @@ module LahnParty.GCC.Exec where
 
 import Control.Lens
 import Control.Monad.Except
+import Control.Monad.Identity
 import Control.Monad.State.Strict
 import Data.Array
 
@@ -16,10 +17,16 @@ import LahnParty.GCC.Monad
 -- * Program execution
 --
 
--- | Run a program from start to stop, returning the resulting state.
-runProgram :: Monad m => Program -> m (Maybe Error, GCC)
-runProgram p = liftM maybeError $ runStateT (runExceptT (untilStop p)) initGCC
+-- | Run a program from start to stop, returning the resulting state and
+--   any error that occured.
+runProgramT :: Monad m => Program -> m (Maybe Error, GCC)
+runProgramT p = liftM maybeError $ runStateT (runExceptT (untilStop p)) initGCC
   where maybeError = over _1 (either Just (const Nothing))
+
+-- | Run a program from start to stop, returning the resulting state and
+--   any error that occured.
+runProgram :: Program -> (Maybe Error, GCC)
+runProgram = runIdentity . runProgramT
 
 -- | Execute one step of a program.
 step :: Monad m => Program -> GCCM m ()

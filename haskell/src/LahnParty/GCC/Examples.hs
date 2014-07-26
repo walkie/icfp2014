@@ -17,4 +17,3 @@ natsubCall :: Assembly
 natsubCall =
   ("entry", [LDC 7, LDC 4, LDF "natsub", AP 2,
              LDC 4, LDC 7, LDF "natsub", AP 2, RTN]) : natsubDef
-

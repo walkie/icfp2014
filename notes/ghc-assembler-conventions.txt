@@ -1,0 +1,119 @@
+ideas for conventions for the ghc macro assembler:
+
+
+--- general info:
+everything is case-insensitive.
+; this is a comment. comments can also be the only thing on a line
+
+blank lines are allowed
+Lines end with a newline. Spaces and tabs are whitespace.
+
+--- program structure
+
+$DATA:			; data segment. contains named constants
+'wall = 0		; map id of wall tile is 0
+
+$VAR:			; variable segment. contains named memory locations
+.stack = 255
+.stack-h = 254
+.stack-g = 253
+.stack-f = 252
+.stack-e = 251
+.stack-d = 250
+.stack-c = 249
+.stack-b = 248
+.stack-a = 247
+
+$PGM:			; main program
+...
+hlt
+
+$SR subroutine1-name:	; subroutines
+...
+$SR subroutine2-name:
+
+--- some useful(?) memory conventions:
+[255] contains the stack pointer
+
+register stack:
+[254] -> H
+[253] -> G
+[252] -> F
+[251] -> E
+[250] -> D
+[249] -> C
+[248] -> B
+[247] -> A
+
+[0] .. [16] should be scratch locations that will be used for temporary computations
+
+
+
+--- emulated instructions and macros:
+NOP:
+MOV pc, pc
+no operation, does nothing
+
+JMP "label":
+MOV pc, "label"
+unconditional jump. Warning! If jump is current location, pc will still be incremented!
+
+JSR "label":
+MOV [255], pc
+MOV pc, "label"
+jump to subroutine at label. registers have to be pushed on the stack manually!
+
+RET:
+MOV pc, 255
+returns from a subroutine. registers have to be popped off the stack manually!
+
+for these functions, use some way to get a unique number for assigning label values
+IF (a <= b) THEN {instructions}:
+jgt "ifcase{uniquenumber}", a, b
+{instructions}
+"ifcase{uniquenumber}":
+
+IF (a >= b) THEN {instructions}:
+jlt "ifcase{uniquenumber}", a, b
+{instructions}
+"ifcase{uniquenumber}":
+
+IF (a == b) THEN {instructions}:
+jeq "noskip{uniquenumber}", a, b
+JMP "skip{uniquenumber}"
+"noskip{uniquenumber}":
+{instructions}
+"skip{uniquenumber}":
+
+ADD x, -y:					; negative constants
+ADD x, (255-y)
+negative constants are 255-constant
+
+SUB x, -y					; negative constants
+SUB x, (255-y)
+negative constants are 255-constant
+
+
+--- labels:
+"label":
+mov pc, "label"
+suggestion: labels are enclosed in quotes ("). At the location of definition, there is a colon after the label. Labels have to be written on their own line.
+The assembler will look for the labels in the $PGM and $SR fragments. Internally, a label will get the name PGM_"label" or SR_name_"label" to allow reusing labels between the program and subroutines. A label will be replaced by the line number of the next line. Label replacement should be the last step in assembly!
+
+--- named memory:
+mov [.stack], 1
+suggestion: named memory locations start with a .
+The assembler should parse the $VAR segment to look for named memory locations and their definitions. Then whenever a named memory location is used, the assembler replaces it by its definition. This replacement should not include the [], so these still have to be written (subject to discussion! please provide input)
+
+--- named constants:
+'wall
+suggestion: named constants start with an apostrophe
+The assembler should parse the $DATA segment to look for named constants and their definitions. Then whenever a named constant is used, it is replaced by its definition. Named constants can only be numeric! (no registers, labels or memory locations!)
+
+--- assembler implementation:
+1) remove comments and newlines
+2) expand macros
+3) replace named constants and named memory locations
+4) figure out and replace labels
+
+attention: at the end of the $PGM section, there should be a HLT instruction. For reasons of space efficiency, this is at the discretion of the user. However, the assembler should give a warning if there is no such instruction at the end of the $PGM section.

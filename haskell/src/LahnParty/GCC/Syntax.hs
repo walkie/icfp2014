@@ -48,4 +48,4 @@ data Inst addr
   -- Debug extensions
   |  DBUG           -- ^ printf debugging
   |  BRK            -- ^ breakpoint debugging
-  deriving (Eq,Show)
+  deriving (Eq,Read,Show)

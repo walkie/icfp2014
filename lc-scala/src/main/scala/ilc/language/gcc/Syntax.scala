@@ -46,6 +46,7 @@ extends functions.Syntax
    with GCCIntSyntax
    with sums.SyntaxSugar
    with products.Syntax
+   with lists.Syntax
    with booleans.SyntaxSugar
    with functions.LetRecSyntax
    with products.InferenceSyntaxSugar
@@ -57,6 +58,7 @@ trait SyntaxSugar
   with inference.LetRecUntypedSyntax
   with inference.LetRecInference
   with products.StdLib
+  with lists.InferenceSyntaxSugar
 {
   outer =>
   implicit def intToUTerm(n: Int): UntypedTerm = asUntyped(LiteralInt(n))
@@ -87,7 +89,7 @@ trait SyntaxSugar
 
   def if_(cond: UntypedTerm)(thn: UntypedTerm) = ProvideElse(cond, thn)
   case class ProvideElse(cond: UntypedTerm, thn: UntypedTerm) {
-    def else_(els: Term): UntypedTerm = asUntyped(IfThenElse)(cond, '_ ->: thn, '_ ->: els)
+    def else_(els: UntypedTerm): UntypedTerm = asUntyped(IfThenElse)(cond, '_ ->: thn, '_ ->: els)
   }
 
   // other syntax for functions
@@ -96,11 +98,11 @@ trait SyntaxSugar
 
   // creates a pair to be used immediately in letrec like
   //   letrec(fun('go)('n) { 'to('n + 1) })
-  def fun(name: Symbol)(args: Symbol*)(body: UntypedTerm) =
-    (name -> args.foldRight(body)(_ ->: _))
+  def fun(name: Symbol)(firstArg: Symbol, args: Symbol*)(body: UntypedTerm) =
+    (name -> (firstArg +: args).foldRight(body)(_ ->: _))
 
-  def fun(name: String)(args: Symbol*)(body: UntypedTerm) =
-    (name -> args.foldRight(body)(_ ->: _))
+  def fun(name: String)(firstArg: Symbol, args: Symbol*)(body: UntypedTerm) =
+    (name -> (firstArg +: args).foldRight(body)(_ ->: _))
 
   implicit def consSyntax[A <% UT, B <% UT](scalaPair: (A, B)): UntypedTerm =
     pair(scalaPair._1, scalaPair._2)

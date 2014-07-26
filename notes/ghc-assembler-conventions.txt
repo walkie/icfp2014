@@ -79,6 +79,51 @@ RET:
 MOV pc, 255
 returns from a subroutine. registers have to be popped off the stack manually!
 
+set-direction:
+int 0
+sets the new direction from register A
+
+get-first-coords:
+int 1
+A <- x coord of first \-man
+B <- y coord of first \-man
+
+get-second-coords:
+int 2
+A <- x coord of second \-man
+B <- y coord of second \-man
+
+get-ghost-id:
+int 3
+A <- id of current ghost
+
+get-ghost-start-coords:
+int 4
+get the start coordinates of the ghost with id in register A
+A <- starting x coord of ghost
+B <- starting y coord of ghost
+
+get-ghost-coords:
+int 5
+get the current coordinates of the ghost with id in register A
+A <- current x coord of ghost
+A <- current y coord of ghost
+
+get-ghost-status:
+int 6
+get status of the ghost with id in register A
+A <- vitality
+B <- direction
+
+get-map:
+int 7
+get the tile at coordinates (x, y) in registers (A, B)
+A <- tile id
+
+dump:
+int 8
+dump registers
+
 ******* removed vvv
 
 for these functions, use some way to get a unique number for assigning label values

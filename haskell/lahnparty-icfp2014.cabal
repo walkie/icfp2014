@@ -18,6 +18,7 @@ library
     LahnParty.GCC.Error,
     LahnParty.GCC.Monad,
     LahnParty.GCC.Exec,
+    LahnParty.GCC.Examples,
     LahnParty.GHC.Syntax,
     LahnParty.GHC.Machine
 

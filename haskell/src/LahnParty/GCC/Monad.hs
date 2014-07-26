@@ -15,7 +15,7 @@ import LahnParty.GCC.Error
 --
 
 -- | GCC execution monad.
-type GCCM m a = ExceptT Error (StateT GCC m) a
+type GCCM m a = StateT GCC (ExceptT Error m) a
 
 
 -- ** Manipulate program counter

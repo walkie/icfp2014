@@ -61,7 +61,7 @@ data GCC = GCC {
   _stackD :: DataStack,
   _stackC :: ControlStack,
   _env    :: Env
-}
+} deriving (Eq,Show)
 
 initGCC :: GCC
 initGCC = GCC 0 [] [Stop] []

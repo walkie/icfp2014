@@ -19,13 +19,12 @@ import LahnParty.GCC.Monad
 
 -- | Run a program from start to stop, returning the resulting state and
 --   any error that occured.
-runProgramT :: Monad m => Program -> m (Maybe Error, GCC)
-runProgramT p = liftM maybeError $ runStateT (runExceptT (untilStop p)) initGCC
-  where maybeError = over _1 (either Just (const Nothing))
+runProgramT :: Monad m => Program -> m (Either Error GCC)
+runProgramT p = runExceptT (execStateT (untilStop p) initGCC)
 
 -- | Run a program from start to stop, returning the resulting state and
 --   any error that occured.
-runProgram :: Program -> (Maybe Error, GCC)
+runProgram :: Program -> Either Error GCC
 runProgram = runIdentity . runProgramT
 
 -- | Execute one step of a program.

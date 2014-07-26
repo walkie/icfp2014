@@ -17,21 +17,26 @@ execTests = testSuite "GCC execution tests" [
 
 -- * Helper functions
 
-run :: [Inst] -> (Maybe Error, GCC)
+run :: [Inst] -> Either Error GCC
 run = runProgram . program
 
 assertError :: Error -> [Inst] -> Assertion
-assertError e p = Just e @=? fst (run p)
+assertError e p = Left e @=? run p
 
 assertStackD :: DataStack -> [Inst] -> Assertion
-assertStackD s p = s @=? _stackD (snd (run p))
+assertStackD s p = case run p of
+  Right gcc -> s @=? _stackD gcc
+  Left  err -> assertFailure $ "Got error: " ++ show err
 
 assertStackC :: ControlStack -> [Inst] -> Assertion
-assertStackC s p = s @=? _stackC (snd (run p))
+assertStackC s p = case run p of
+  Right gcc -> s @=? _stackC gcc
+  Left  err -> assertFailure $ "Got error: " ++ show err
 
 assertStackCD :: ControlStack -> DataStack -> [Inst] -> Assertion
-assertStackCD cs ds p = (cs,ds) @=? (_stackC gcc, _stackD gcc)
-  where gcc = snd (run p)
+assertStackCD c d p = case run p of
+  Right gcc -> (c,d) @=? (_stackC gcc, _stackD gcc)
+  Left  err -> assertFailure $ "Got error: " ++ show err
 
 
 -- * Tests

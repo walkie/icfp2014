@@ -15,6 +15,7 @@ library
     LahnParty.GCC.Syntax,
     LahnParty.GCC.Assembler
     LahnParty.GCC.State,
+    LahnParty.GCC.Pretty,
     LahnParty.GCC.Error,
     LahnParty.GCC.Monad,
     LahnParty.GCC.Exec,

@@ -26,6 +26,7 @@ assemble p = program (map inst (concatMap snd p))
     inst (TSEL t f) = TSEL (address p t) (address p f)
     inst (LDF  f)   = LDF  (address p f)
     -- the rest of the instructions
+    inst (LDC  i) = LDC i
     inst (LD n i) = LD n i
     inst ADD      = ADD
     inst SUB      = SUB

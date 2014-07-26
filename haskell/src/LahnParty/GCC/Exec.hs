@@ -17,8 +17,9 @@ import LahnParty.GCC.Monad
 --
 
 -- | Run a program from start to stop, returning the resulting state.
-runProgram :: Monad m => Program -> m (Either Error GCC)
-runProgram p = runExceptT (execStateT (untilStop p) initGCC)
+runProgram :: Monad m => Program -> m (Maybe Error, GCC)
+runProgram p = liftM maybeError $ runStateT (runExceptT (untilStop p)) initGCC
+  where maybeError = over _1 (either Just (const Nothing))
 
 -- | Execute one step of a program.
 step :: Monad m => Program -> GCCM m ()

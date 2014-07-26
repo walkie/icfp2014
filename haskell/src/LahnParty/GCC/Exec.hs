@@ -36,7 +36,10 @@ step p = do
   
 -- | Run a program until it stops.
 untilStop :: Monad m => Program -> GCCM m ()
-untilStop p = do stop <- isStop; unless stop (step p)
+untilStop p = do stop <- isStop
+                 unless stop $ do
+                   step p
+                   untilStop p
 
 
 --
@@ -107,12 +110,14 @@ execInst (AP n) = do
   pc  .= faddr
 
 execInst RTN = do
-  stop <- isStop
-  unless stop $ do
-    raddr <- popReturn
-    renv  <- popFramePtr
-    env .= renv
-    pc  .= raddr
+  stop <- isEmptyC
+  if stop
+    then pushC Stop
+    else do
+      raddr <- popReturn
+      renv  <- popFramePtr
+      env .= renv
+      pc  .= raddr
 
 -- Recursive environment function calls
 execInst (DUM n) = env %= (Dummy n :) >> incPC

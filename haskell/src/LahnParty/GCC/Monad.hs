@@ -70,6 +70,10 @@ popC = do
     (a:as) -> stackC .= as >> return a
     _      -> throwError (StackError EmptyControlStack)
 
+-- | True if the control stack is empty.
+isEmptyC :: Monad m => GCCM m Bool
+isEmptyC = liftM null (use stackC)
+
 -- | True if the top of the control stack is the Stop symbol.
 isStop :: Monad m => GCCM m Bool
 isStop = do

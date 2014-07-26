@@ -9,7 +9,7 @@ import LahnParty.GCC
 -- * Test suite
 
 execTests = testSuite "GCC execution tests" [
-    test_initStackD, test_initStackC,
+    test_empty,
     test_push, test_add,
     test_arithmetic
   ]
@@ -41,15 +41,14 @@ assertStackCD c d p = case run p of
 
 -- * Tests
 
-test_initStackD = testName "initStackD" $ assertStackD [] []
-test_initStackC = testName "initStackC" $ assertStackC [Stop] []
+test_empty = testName "empty" $ assertStackCD [Stop] [] [RTN]
 
-test_push = testName "push" $ assertStackD [Lit 3, Lit 2] [LDC 2, LDC 3]
-test_add  = testName "add"  $ assertStackD [Lit (-3)] [LDC 2, LDC (-5), ADD]
+test_push = testName "push" $ assertStackD [Lit 3, Lit 2] [LDC 2, LDC 3, RTN]
+test_add  = testName "add"  $ assertStackD [Lit (-3)] [LDC 2, LDC (-5), ADD, RTN]
 
 test_arithmetic = testName "arithmetic" $ assertStackD [Lit 10]
   [LDC 2, LDC 3, ADD, -- 5
    LDC 4, MUL,        -- 20
    LDC 9, LDC 4, SUB, -- 20, 5
    LDC 3, SUB,        -- 20, 2
-   DIV]               -- 10
+   DIV  , RTN]        -- 10

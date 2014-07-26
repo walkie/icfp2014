@@ -64,6 +64,6 @@ data GCC = GCC {
 } deriving (Eq,Show)
 
 initGCC :: GCC
-initGCC = GCC 0 [] [Stop] []
+initGCC = GCC 0 [] [] []
 
 $(makeLenses ''GCC)

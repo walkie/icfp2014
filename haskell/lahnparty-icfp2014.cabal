@@ -13,6 +13,7 @@ library
   exposed-modules:
     LahnParty.GCC,
     LahnParty.GCC.Syntax,
+    LahnParty.GCC.Assembler
     LahnParty.GCC.State,
     LahnParty.GCC.Error,
     LahnParty.GCC.Monad,

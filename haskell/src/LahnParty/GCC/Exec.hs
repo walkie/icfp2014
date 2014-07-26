@@ -57,7 +57,7 @@ boolOp :: Monad m => (Int -> Int -> Bool) -> GCCM m ()
 boolOp f = intOp (\a b -> if f a b then 1 else 0)
 
 -- | Execute a single instruction.
-execInst :: Monad m => Inst -> GCCM m ()
+execInst :: Monad m => Inst Addr -> GCCM m ()
 
 -- Load
 execInst (LDC n)  = pushD (Lit n) >> incPC
@@ -85,7 +85,7 @@ execInst ATOM = do
   incPC
 
 -- Pairs
-execInst CONS = liftM2 Pair popD popD >>= pushD >> incPC
+execInst CONS = do b <- popD; a <- popD; pushD (Pair a b); incPC
 execInst CAR  = popPair >>= pushD . fst >> incPC
 execInst CDR  = popPair >>= pushD . snd >> incPC
 

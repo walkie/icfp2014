@@ -7,14 +7,14 @@ import Data.Array
 type Addr = Int
 
 -- | A program is an array of instructions.
-type Program = Array Addr Inst
+type Program = Array Addr (Inst Addr)
 
 -- | Smart constructor to build a program from a list of instructions.
-program :: [Inst] -> Program
+program :: [Inst Addr] -> Program
 program is = listArray (0, length is - 1) is
 
 -- | GCC instruction set.
-data Inst
+data Inst addr
   =  LDC  Int       -- ^ load constant (literal)
   |  LD   Int  Int  -- ^ load from environment (frame number, element in frame)
   |  ADD            -- ^ integer addition
@@ -28,9 +28,9 @@ data Inst
   |  CONS           -- ^ allocate a CONS cell
   |  CAR            -- ^ extract first element from CONS cell
   |  CDR            -- ^ extract second element from CONS cell
-  |  SEL  Addr Addr -- ^ conditional branch (true, false)
+  |  SEL  addr addr -- ^ conditional branch (true, false)
   |  JOIN           -- ^ return from branch
-  |  LDF  Addr      -- ^ load function
+  |  LDF  addr      -- ^ load function
   |  AP   Int       -- ^ call function (number of args)
   |  RTN            -- ^ return from function call
   |  DUM  Int       -- ^ create empty environment frame (size of frame)
@@ -38,7 +38,7 @@ data Inst
   |  STOP           -- ^ terminate co-processor execution
   
   -- Tail call extensions
-  |  TSEL Addr Addr -- ^ tail-call conditional branch (true, false)
+  |  TSEL addr addr -- ^ tail-call conditional branch (true, false)
   |  TAP  Int       -- ^ tail-call function (# args)
   |  TRAP Int       -- ^ recursive environment tail-call function (# args)
   

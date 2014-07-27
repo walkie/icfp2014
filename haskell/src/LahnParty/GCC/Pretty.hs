@@ -47,35 +47,38 @@ prettyStackC = prettyStack prettyControl
 prettyValue :: Value -> String
 prettyValue (Lit i)    = show i
 prettyValue (Pair a b) = "(" ++ prettyValue a ++ ", " ++ prettyValue b ++ ")"
-prettyValue (Clos f m) = show f ++ " " ++ prettyEnv 2 m
+prettyValue (Clos f e) = "[" ++ show f ++ ", " ++ show e ++ "]"
 
 -- | Pretty print a control element.
 prettyControl :: Control -> String
-prettyControl (Join     a) = "Join "   ++ show a
-prettyControl (Return   a) = "Return " ++ show a
-prettyControl (FramePtr e) = "FramePtr" ++ 
-                             if null e then " [Empty]" else prettyEnv 8 e
+prettyControl (Join     a) = "Join "     ++ show a
+prettyControl (Return   a) = "Return "   ++ show a
+prettyControl (FramePtr a) = "FramePtr " ++ show a
 prettyControl Stop         = "Stop"
 
--- | Pretty print a control element.
-prettyFrame :: Int -> (Int,Frame) -> String
-prettyFrame k (n,f) = unlines $ padLeft k ("Frame " ++ show n) : go f
-  where
-    go (Dummy m)   = ["  [Dummy " ++ show m ++ "]"]
-    go (Values vs) = map (numberedLine (k + k' + 2) prettyValue) (zip [0..] vs)
-      where k' = length (show (length vs))
+-- | Pretty print an environment frame.
+prettyFrame :: (Int,Frame) -> String
+prettyFrame (n, Frame p c) =
+    unlines $ ("Frame " ++ show n ++ " => " ++ show p) : case c of
+      Dummy m   -> ["[Dummy " ++ show m ++ "]"]
+      Values vs -> let k = length (show (length vs))
+                   in map (numberedLine (k + 2) prettyValue) (zip [0..] vs)
 
--- | Pretty print an environment.
-prettyEnv :: Int -> Env -> String
-prettyEnv k = unlines . map (prettyFrame k) . zip [0..]
+-- | Pretty print the list of frames.
+prettyFrames :: [Frame] -> String
+prettyFrames = unlines . map prettyFrame . zip [0..]
 
 -- | Pretty print a program execution state.
 prettyGCC :: Program -> GCC -> String
-prettyGCC p (GCC pc ds cs env) = unlines 
-    [padLeft k (show pc) ++ ": " ++ show (p ! pc), "",
-     "== Data Stack ==",    prettyStackD ds,
-     "== Control Stack ==", prettyStackC cs,
-     "== Environment ==",   prettyEnv 0 env]
+prettyGCC p (GCC pc ds cs fs fp) = unlines 
+    [ padLeft k (show pc) ++ ": " ++ show (p ! pc), ""
+    , "== Data Stack =="
+    , prettyStackD ds
+    , "== Control Stack =="
+    , prettyStackC cs
+    , "== Environment =="
+    , "FP: " ++ show fp
+    , prettyFrames fs ]
   where k = (length . show . snd . bounds) p
 
 -- | Format a numbered line.

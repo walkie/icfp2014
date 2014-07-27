@@ -55,7 +55,7 @@ popPair :: Monad m => GCCM m (Value,Value)
 popPair = popD >>= toPair
 
 -- | Pop a closure off the data stack.
-popClos :: Monad m => GCCM m (Addr,Env)
+popClos :: Monad m => GCCM m (Addr,FramePtr)
 popClos = popD >>= toClos
        
 
@@ -106,27 +106,55 @@ popReturn :: Monad m => GCCM m Addr
 popReturn = popC >>= toReturn
 
 -- | Pop a frame pointer off the control stack.
-popFramePtr :: Monad m => GCCM m Env
+popFramePtr :: Monad m => GCCM m FramePtr
 popFramePtr = popC >>= toFramePtr
 
 
 -- ** Manipulate environment
 
+-- | Lookup a frame pointer.
+frame :: Monad m => FramePtr -> GCCM m Frame
+frame fp = do
+  fs <- use frames
+  unless (fp >= 0 && fp < length fs) $
+    throwError $ FrameError ("no frame at fp: " ++ show fp)
+  return (reverse fs !! fp)
+
+-- | Build the current environment.
+buildEnv :: Monad m => GCCM m [Frame]
+buildEnv = do use env >>= go
+  where 
+    go (-1) = return []
+    go fp   = do f <- frame fp; liftM (f:) (go (_parent f))
+
 -- | Get a value from the environment.
 envGet :: Monad m => Int -> Int -> GCCM m Value
-envGet n i = use env >>= getAt n >>= toValues >>= getAt i
+envGet n i = buildEnv >>= getAt n >>= toValues >>= getAt i
 
 -- | Set a value in the environment.
 envSet :: Monad m => Int -> Int -> Value -> GCCM m ()
-envSet n i v = env <~ (use env >>= updateAt n inFrame)
-  where inFrame f = toValues f >>= setAt i v >>= return . Values
+envSet n i v = do
+    fp <- if n == 0 then use env
+          else buildEnv >>= getAt (n-1) >>= (return . _parent)
+    frames <~ (use frames >>= updateAt fp inFrame)
+  where
+    inFrame f = do
+      vs <- toValues f >>= setAt i v;
+      return $ set content (Values vs) f
 
--- | Pop a dummy frame of the size or raise an error.
-popDummy :: Monad m => Int -> GCCM m ()
-popDummy n = do
-    e <- use env
-    case e of
-      (f:fs) -> toDummy f >>= check >> env .= fs
-      _      -> throwError OutOfBounds
-  where check n' = unless (n == n')
-                 $ raise FrameError ("dummy length " ++ show n) (show n')
+-- | Create a new environment frame and get a pointer to it.
+newFrame :: Monad m => FramePtr -> Content -> GCCM m FramePtr
+newFrame fp c = do
+  frames %= (Frame fp c :)
+  liftM (subtract 1 . length) (use frames)
+
+-- | Replace a dummy frame at the indicated frame pointer.
+replaceDummy :: Monad m => FramePtr -> [Value] -> GCCM m ()
+replaceDummy fp vs = do
+    frames <~ (use frames >>= updateAt fp replace)
+  where
+    n = length vs
+    replace f = do
+      n' <- toDummy f
+      if n == n' then return $ set content (Values vs) f
+      else raise FrameError ("dummy length " ++ show n) (show n')

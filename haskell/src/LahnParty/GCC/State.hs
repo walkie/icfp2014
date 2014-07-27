@@ -25,14 +25,14 @@ type ControlStack = Stack Control
 data Value 
   =  Lit  Int
   |  Pair Value Value
-  |  Clos Addr  Env
+  |  Clos Addr  FramePtr
   deriving (Eq,Read,Show)
 
 -- | Elements in the control stack.
 data Control
   =  Join     Addr
   |  Return   Addr
-  |  FramePtr Env
+  |  FramePtr FramePtr
   |  Stop
   deriving (Eq,Read,Show)
 
@@ -41,15 +41,23 @@ data Control
 -- * Environment
 --
 
--- | An environment frame is a fixed-length list of slots for values.
+-- | A frame pointer is an index into the list of environment frames.
+type FramePtr = Int
+
+-- | An environment frame contains a pointer to its parent and some content.
+data Frame = Frame {
+  _parent  :: Addr,
+  _content :: Content
+} deriving (Eq,Read,Show)
+  
+-- | An environment frame contains a fixed-length list of slots for values.
 --   A dummy frame is an uninitialized environment frame.
-data Frame = Values [Value]
-           | Dummy  Int
+data Content
+  =  Values [Value]
+  |  Dummy  Int
   deriving (Eq,Read,Show)
 
--- | An environment is a list of frames.
-type Env = [Frame]
-
+$(makeLenses ''Frame)
 
 --
 -- * Program state
@@ -60,10 +68,11 @@ data GCC = GCC {
   _pc     :: Addr,
   _stackD :: DataStack,
   _stackC :: ControlStack,
-  _env    :: Env
+  _frames :: [Frame],
+  _env    :: FramePtr
 } deriving (Eq,Read,Show)
 
 initGCC :: GCC
-initGCC = GCC 0 [] [] []
+initGCC = GCC 0 [] [] [] (-1)
 
 $(makeLenses ''GCC)

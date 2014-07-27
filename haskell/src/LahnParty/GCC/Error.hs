@@ -60,7 +60,7 @@ toPair (Pair a b) = return (a,b)
 toPair v          = raise TypeError "pair" v
 
 -- | Get the value as a closure, or raise a type error.
-toClos :: MonadError Error m => Value -> m (Addr,Env)
+toClos :: MonadError Error m => Value -> m (Addr,FramePtr)
 toClos (Clos a e) = return (a,e)
 toClos v          = raise TypeError "closure" v
 
@@ -76,17 +76,17 @@ toReturn c          = raise ControlError "return" c
 
 -- | Get the control element as a frame pointer (environment),
 --   or raise a control error.
-toFramePtr :: MonadError Error m => Control -> m Env
+toFramePtr :: MonadError Error m => Control -> m FramePtr
 toFramePtr (FramePtr e) = return e
 toFramePtr c            = raise ControlError "frame pointer" c
 
 -- | Get the environment frame as a list of values, or raise a frame error.
 toValues :: MonadError Error m => Frame -> m [Value]
-toValues (Values vs) = return vs
-toValues f           = raise FrameError "values" f
+toValues (Frame _ (Values vs)) = return vs
+toValues f                     = raise FrameError "values" f
 
 -- | Get the environment frame as a dummy frame description,
 --   or raise a frame error.
 toDummy :: MonadError Error m => Frame -> m Int
-toDummy (Dummy n) = return n
-toDummy f         = raise FrameError "dummy frame" f
+toDummy (Frame _ (Dummy n)) = return n
+toDummy f                   = raise FrameError "dummy frame" f

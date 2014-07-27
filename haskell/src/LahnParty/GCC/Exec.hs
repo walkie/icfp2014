@@ -120,9 +120,10 @@ execInst (LDF a) = use env >>= pushD . Clos a >> incPC
 execInst (AP n) = do
   (faddr,fenv) <- popClos
   args <- replicateM n popD
+  fp   <- newFrame fenv (Values (reverse args))
   pushFramePtr
   pushReturn
-  env .= Values (reverse args) : fenv
+  env .= fp
   pc  .= faddr
 
 execInst RTN = do
@@ -136,13 +137,17 @@ execInst RTN = do
       pc  .= raddr
 
 -- Recursive environment function calls
-execInst (DUM n) = env %= (Dummy n :) >> incPC
+execInst (DUM n) = do
+  old <- use env
+  new <- newFrame old (Dummy n)
+  env .= new
+  incPC
 
 execInst (RAP n) = do
   (faddr,fenv) <- popClos
-  popDummy n
+  fp   <- use env
   args <- replicateM n popD
-  env %= (Values (reverse args) :)
+  replaceDummy fp (reverse args)
   pushFramePtr
   pushReturn
   env .= fenv
@@ -161,15 +166,16 @@ execInst (TSEL t f) = do
 execInst (TAP n) = do
   (faddr,fenv) <- popClos
   args <- replicateM n popD
+  fp   <- newFrame fenv (Values (reverse args))
   pushFramePtr
-  env .= Values (reverse args) : fenv
+  env .= fp
   pc  .= faddr
 
 execInst (TRAP n) = do
   (faddr,fenv) <- popClos
-  popDummy n
+  fp   <- use env
   args <- replicateM n popD
-  env %= (Values (reverse args) :)
+  replaceDummy fp (reverse args)
   pushFramePtr
   env .= fenv
   pc  .= faddr

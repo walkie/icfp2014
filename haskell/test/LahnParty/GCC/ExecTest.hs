@@ -14,9 +14,8 @@ execTests = testSuite "GCC execution tests" [
     test_push, test_add, test_arithmetic,
     test_logic, test_atom,
     test_cons, test_car, test_cdr,
-    test_branch,
-    test_call,
-    test_natsub
+    test_branch, test_call,
+    test_natsub, test_local
   ]
 
 
@@ -97,3 +96,6 @@ test_call = testName "function call" $ assertStackD
 
 test_natsub = testName "natsub" $ assertStackD [Lit 0, Lit 3] 
   $ assemble natsubCall
+
+test_local = testName "local" $ assertStackD [Lit 42]
+  $ assemble local

@@ -184,5 +184,5 @@ execInst (TRAP n) = do
 execInst (ST n i) = popD >>= envSet n i >> incPC
   
 -- Debug extensions
-execInst DBUG = throwError $ Unimplemented "DBUG"
-execInst BRK  = throwError $ Unimplemented "BRK"
+execInst DBUG = throwError $ Unimplemented "DBUG (use traceProgram)"
+execInst BRK  = pushC Stop

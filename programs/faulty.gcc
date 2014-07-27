@@ -1,0 +1,275 @@
+DUM 28
+LDF 58
+LDF 74
+LDF 76
+LDF 79
+LDF 140
+LDF 157
+LDF 165
+LDF 170
+LDF 174
+LDF 178
+LDF 182
+LDF 186
+LDF 190
+LDF 194
+LDF 198
+LDF 201
+LDF 205
+LDF 210
+LDF 216
+LDF 222
+LDF 228
+LDF 234
+LDF 237
+LDF 245
+LDF 249
+LDF 253
+LDF 257
+LDF 271
+LDF 273
+RAP 28
+RTN
+LD 3 0		; var Var(z,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+JOIN
+LD 0 0		; var Var(l,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))))
+CAR
+LD 0 0		; var Var(l,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))))
+CDR
+LD 1 0		; var Var(go,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+AP 1
+LD 2 0		; var Var(fun,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+AP 2
+JOIN
+LD 0 0		; var Var(l,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))))
+ATOM
+SEL 32 34
+RTN
+LD 3 0		; var Var(list,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))))
+LD 0 0		; var Var(go,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+AP 1
+RTN
+DUM 1
+LDF 43
+LDF 47
+RAP 1
+RTN
+LDF 51
+RTN
+LDF 56
+RTN
+LD 1 0		; var Var(head,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))))
+LD 2 0		; var Var(fun,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))) -> ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z)))))
+AP 1
+LD 0 0		; var Var(tail,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+CONS
+RTN
+LDF 60
+RTN
+LD 1 0		; var Var(list,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))))
+LDC 0
+LDF 66
+LD 2 0		; var Var(foldRight,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))) -> (ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z)))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+AP 3
+RTN
+LDF 68
+RTN
+LD 0 0		; var Var(world,ProductType(TypeVariable(65,Some(UApp(UPolymorphicConstant(Proj1),UVar(world)))),TypeVariable(64,Some(UPolymorphicConstant(Proj1)))))
+CAR
+RTN
+LD 0 0		; var Var(world,ProductType(TypeVariable(69,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(72,Some(UApp(UPolymorphicConstant(Proj1),UApp(UPolymorphicConstant(Proj2),UVar(world))))),TypeVariable(68,Some(UPolymorphicConstant(Proj1))))))
+CDR
+CAR
+RTN
+LD 1 0		; var Var(l,ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))))
+CAR
+JOIN
+LD 1 0		; var Var(l,ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))))
+CDR
+LD 0 0		; var Var(i,Z)
+LDC 1
+SUB
+LD 2 0		; var Var(go,ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))) -> Z -> TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))
+AP 2
+JOIN
+LD 0 0		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 83 86
+RTN
+LDF 94
+RTN
+LD 1 0		; var Var(l,ListType(ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))))
+CAR
+JOIN
+LD 1 0		; var Var(l,ListType(ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))))
+CDR
+LD 0 0		; var Var(i,Z)
+LDC 1
+SUB
+LD 2 0		; var Var(go,ListType(ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))) -> Z -> ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))))
+AP 2
+JOIN
+LD 0 0		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 101 104
+RTN
+LDF 112
+RTN
+LD 4 0		; var Var(world,ProductType(ListType(ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))),TypeVariable(115,Some(UPolymorphicConstant(Proj1)))))
+CAR
+LD 2 0		; var Var(y,Z)
+LD 0 0		; var Var(go,ListType(ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))) -> Z -> ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))))
+AP 2
+RTN
+DUM 1
+LDF 117
+LDF 119
+RAP 1
+LD 2 0		; var Var(x,Z)
+LD 0 0		; var Var(go,ListType(TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1))))))) -> Z -> TypeVariable(93,Some(UApp(UApp(UVar(go),UApp(UPolymorphicConstant(Tail),UVar(l))),UApp(UApp(UMonomorphicConstant(Minus),UVar(i)),UMonomorphicConstant(LiteralInt(1)))))))
+AP 2
+RTN
+DUM 1
+LDF 99
+LDF 125
+RAP 1
+RTN
+LDF 133
+RTN
+LDF 138
+RTN
+LD 0 0		; var Var(el,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))))
+CAR
+LD 0 0		; var Var(el,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))))
+CDR
+CAR
+LD 0 0		; var Var(el,ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))))
+CDR
+CDR
+LDC 0
+LDC 0
+CONS
+CONS
+CONS
+CONS
+RTN
+LD 0 0		; var Var(world,ProductType(TypeVariable(126,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(124,Some(UPolymorphicConstant(Proj2))),ProductType(ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))),TypeVariable(123,Some(UPolymorphicConstant(Proj1)))))))
+CDR
+CDR
+CAR
+LDF 142
+LD 1 1		; var Var(map,ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el)))))))) -> (ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))))) -> ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))) -> ListType(ProductType(TypeVariable(152,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(150,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(155,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(el))))),ProductType(Z,Z))))))
+AP 2
+RTN
+LD 0 0		; var Var(world,ProductType(TypeVariable(170,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(168,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(166,Some(UPolymorphicConstant(Proj2))),TypeVariable(174,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(world))))))))))
+CDR
+CDR
+CDR
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 0
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 3
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 4
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 5
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 6
+CEQ
+RTN
+LD 0 0		; var Var(char,ProductType(Z,TypeVariable(198,Some(UPolymorphicConstant(Proj1)))))
+CAR
+RTN
+LD 0 0		; var Var(char,ProductType(TypeVariable(203,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(206,Some(UApp(UPolymorphicConstant(Proj1),UApp(UPolymorphicConstant(Proj2),UVar(char))))),TypeVariable(202,Some(UPolymorphicConstant(Proj1))))))
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,ProductType(TypeVariable(212,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(210,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(216,Some(UApp(UPolymorphicConstant(Proj1),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(char)))))),TypeVariable(209,Some(UPolymorphicConstant(Proj1)))))))
+CDR
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,ProductType(TypeVariable(224,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(222,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(220,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(229,Some(UApp(UPolymorphicConstant(Proj1),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(char))))))),TypeVariable(219,Some(UPolymorphicConstant(Proj1))))))))
+CDR
+CDR
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,ProductType(TypeVariable(237,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(235,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(233,Some(UPolymorphicConstant(Proj2))),ProductType(TypeVariable(231,Some(UPolymorphicConstant(Proj2))),TypeVariable(242,Some(UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UApp(UPolymorphicConstant(Proj2),UVar(char))))))))))))
+CDR
+CDR
+CDR
+CDR
+RTN
+LD 0 0		; var Var(ghost,ProductType(Z,TypeVariable(198,Some(UPolymorphicConstant(Proj1)))))
+LD 1 14		; var Var(vitality,ProductType(Z,TypeVariable(198,Some(UPolymorphicConstant(Proj1)))) -> Z)
+AP 1
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(ghost,ProductType(Z,TypeVariable(198,Some(UPolymorphicConstant(Proj1)))))
+LD 1 14		; var Var(vitality,ProductType(Z,TypeVariable(198,Some(UPolymorphicConstant(Proj1)))) -> Z)
+AP 1
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(lambdaMan,ProductType(Z,TypeVariable(253,Some(UPolymorphicConstant(Proj1)))))
+CAR
+RTN
+LDC 1
+LD 0 0		; var Var(lambdaMan,ProductType(Z,TypeVariable(253,Some(UPolymorphicConstant(Proj1)))))
+LD 1 21		; var Var(powerLeft,ProductType(Z,TypeVariable(253,Some(UPolymorphicConstant(Proj1)))) -> Z)
+AP 1
+LDC 0
+CEQ
+SUB
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 0
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 3
+CEQ
+RTN
+LD 1 0		; var Var(_state,TypeVariable(277,Some(UAbs(_state,None,UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3))))))))
+LDC 3
+CONS
+RTN
+LDF 261
+RTN
+LDC 42
+LDF 265
+CONS
+RTN
+LDF 267
+RTN
+LD 0 27		; var Var(go,TypeVariable(272,Some(UAbs(world,None,UAbs(ghosts,None,UApp(UApp(UPolymorphicConstant(Pair),UMonomorphicConstant(LiteralInt(42))),UAbs(_state,None,UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3)))))))))) -> TypeVariable(273,Some(UAbs(ghosts,None,UApp(UApp(UPolymorphicConstant(Pair),UMonomorphicConstant(LiteralInt(42))),UAbs(_state,None,UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3))))))))) -> ProductType(Z,TypeVariable(277,Some(UAbs(_state,None,UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3))))))) -> TypeVariable(278,Some(UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3)))))) -> ProductType(TypeVariable(277,Some(UAbs(_state,None,UAbs(world,None,UApp(UApp(UPolymorphicConstant(Pair),UVar(_state)),UMonomorphicConstant(LiteralInt(3))))))),Z)))
+RTN

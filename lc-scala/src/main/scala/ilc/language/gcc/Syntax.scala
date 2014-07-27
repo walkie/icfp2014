@@ -41,7 +41,6 @@ extends base.Syntax
 
 trait Syntax
 extends functions.Syntax
-   with let.Syntax
    with maybe.Syntax
    with GCCIntSyntax
    with sums.SyntaxSugar
@@ -54,7 +53,7 @@ extends functions.Syntax
 trait SyntaxSugar
   extends Syntax
   with inference.PrettySyntax
-  with inference.LetSyntaxSugar
+  with inference.SyntaxSugar
   with inference.LetRecUntypedSyntax
   with inference.LetRecInference
   with products.StdLib

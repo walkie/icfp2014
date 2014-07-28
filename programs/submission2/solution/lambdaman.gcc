@@ -1,0 +1,2411 @@
+DUM 43
+LDF 73		; var Var(all_9,[BooleanType] -> BooleanType)
+LDF 104		; var Var(any_17,[BooleanType] -> BooleanType)
+LDF 109		; var Var(world_map_25,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> [[Z]])
+LDF 112		; var Var(world_lambdaStatus_26,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+LDF 162		; var Var(world_itemAt_27,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> Z -> Z)
+LDF 226		; var Var(world_ghostsStatus_36,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+LDF 231		; var Var(world_fruitStatus_47,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z)
+LDF 236		; var Var(isWall_48,Z -> BooleanType)
+LDF 240		; var Var(isEmptyField_49,Z -> BooleanType)
+LDF 244		; var Var(isPill_50,Z -> BooleanType)
+LDF 248		; var Var(isPowerPill_51,Z -> BooleanType)
+LDF 252		; var Var(isFruit_52,Z -> BooleanType)
+LDF 256		; var Var(isLambdaStart_53,Z -> BooleanType)
+LDF 260		; var Var(isGhostStart_54,Z -> BooleanType)
+LDF 264		; var Var(vitality_55,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+LDF 267		; var Var(location_56,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> (Z) x (Z))
+LDF 271		; var Var(direction_57,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+LDF 276		; var Var(lives_58,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+LDF 282		; var Var(score_59,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+LDF 288		; var Var(isAfraid_60,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> BooleanType)
+LDF 294		; var Var(isInvisible_61,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> BooleanType)
+LDF 300		; var Var(powerLeft_62,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+LDF 303		; var Var(isInPowerMode_63,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> BooleanType)
+LDF 311		; var Var(isUp_64,Z -> BooleanType)
+LDF 315		; var Var(isRight_65,Z -> BooleanType)
+LDF 319		; var Var(isDown_66,Z -> BooleanType)
+LDF 323		; var Var(isLeft_67,Z -> BooleanType)
+LDF 336		; var Var(nextDir_68,Z -> Z)
+LDF 342		; var Var(mod_72,Z -> Z -> Z)
+LDF 356		; var Var(abs_73,Z -> Z)
+LDF 369		; var Var(pointEq_76,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+LDF 410		; var Var(vectorToMove_79,(Z) x (Z) -> Z)
+LDF 418		; var Var(manhattan_88,(Z) x (Z) -> (Z) x (Z) -> Z)
+LDF 568		; var Var(computePath_89,(Z) x (Z) -> (Z) x (Z) -> [[Z]] -> [(Z) x (Z)])
+LDF 1750		; var Var(computeParents_116,(Z) x (Z) -> (Z) x (Z) -> [[Z]] -> [[(Z) x (Z)]])
+LDF 1762		; var Var(test_316,BooleanType -> BooleanType -> BooleanType)
+LDF 1925		; var Var(findFruitLocation_321,[[Z]] -> (Z) x (Z))
+LDF 2028		; var Var(obstacleAt_351,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> Z -> BooleanType)
+LDF 2097		; var Var(obstacleInDir_371,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> BooleanType)
+LDF 2145		; var Var(chooseFreeDir_381,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+LDF 2150		; var Var(getMovement_389,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+LDF 2153		; var Var(getTick_390,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+LDF 2157		; var Var(randomMove_391,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+LDF 2397		; var Var(main_392,UnitType)
+RAP 43
+RTN
+LDC 1
+JOIN
+LD 0 1		; var Var(b2lit,BooleanType)
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(b1lit,BooleanType)
+SEL 49 51		; var Var(if_t_14,UnitType -> BooleanType), var Var(if_f_15,UnitType -> BooleanType)
+RTN
+LD 0 0		; var Var(l,[BooleanType])
+CAR
+LD 0 0		; var Var(l,[BooleanType])
+CDR
+LD 1 0		; var Var(go,[BooleanType] -> BooleanType)
+AP 1
+LDF 53		; var Var(fun_13,BooleanType -> BooleanType -> BooleanType)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[BooleanType])
+ATOM
+SEL 47 56		; var Var(if_t_11,UnitType -> BooleanType), var Var(if_f_12,UnitType -> BooleanType)
+RTN
+LD 1 0		; var Var(list,[BooleanType])
+LD 0 0		; var Var(go,[BooleanType] -> BooleanType)
+AP 1
+RTN
+DUM 1
+LDF 65		; var Var(go_10,[BooleanType] -> BooleanType)
+LDF 69		; var Var(foldRightBody_16,UnitType)
+RAP 1
+RTN
+LDC 0
+JOIN
+LDC 1
+JOIN
+LD 0 1		; var Var(b2lit,BooleanType)
+JOIN
+LD 0 0		; var Var(b1lit,BooleanType)
+SEL 80 82		; var Var(if_t_22,UnitType -> BooleanType), var Var(if_f_23,UnitType -> BooleanType)
+RTN
+LD 0 0		; var Var(l,[BooleanType])
+CAR
+LD 0 0		; var Var(l,[BooleanType])
+CDR
+LD 1 0		; var Var(go,[BooleanType] -> BooleanType)
+AP 1
+LDF 84		; var Var(fun_21,BooleanType -> BooleanType -> BooleanType)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[BooleanType])
+ATOM
+SEL 78 87		; var Var(if_t_19,UnitType -> BooleanType), var Var(if_f_20,UnitType -> BooleanType)
+RTN
+LD 1 0		; var Var(list,[BooleanType])
+LD 0 0		; var Var(go,[BooleanType] -> BooleanType)
+AP 1
+RTN
+DUM 1
+LDF 96		; var Var(go_18,[BooleanType] -> BooleanType)
+LDF 100		; var Var(foldRightBody_24,UnitType)
+RAP 1
+RTN
+LD 0 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+CAR
+RTN
+LD 0 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+CDR
+CAR
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+JOIN
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 116 119		; var Var(if_t_29,UnitType -> Z), var Var(if_f_30,UnitType -> Z)
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 132 135		; var Var(if_t_33,UnitType -> [Z]), var Var(if_f_34,UnitType -> [Z])
+RTN
+LD 2 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+CAR
+LD 2 2		; var Var(y,Z)
+LD 0 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+RTN
+DUM 1
+LDF 143		; var Var(goElemAt_32,[[Z]] -> Z -> [Z])
+LDF 148		; var Var(elemAtBody_35,UnitType)
+RAP 1
+LD 1 1		; var Var(x,Z)
+LD 0 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+RTN
+DUM 1
+LDF 127		; var Var(goElemAt_28,[Z] -> Z -> Z)
+LDF 154		; var Var(elemAtBody_31,UnitType)
+RAP 1
+RTN
+LDC 0
+JOIN
+LD 2 0		; var Var(vit,Z)
+LD 1 0		; var Var(loc,(Z) x (Z))
+LD 0 0		; var Var(dir,Z)
+LDC 0
+LDC 0
+CONS
+CONS
+CONS
+CONS
+RTN
+LD 2 0		; var Var(bind_3lit,(Z) x (((Z) x (Z)) x (Z)))
+CDR
+CDR
+LDF 169		; var Var(fun_45,Z -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+RTN
+LD 1 0		; var Var(bind_3lit,(Z) x (((Z) x (Z)) x (Z)))
+CDR
+CAR
+LDF 179		; var Var(fun_44,(Z) x (Z) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+RTN
+LD 0 0		; var Var(bind_3lit,(Z) x (((Z) x (Z)) x (Z)))
+CAR
+LDF 185		; var Var(fun_43,Z -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+RTN
+LD 0 0		; var Var(el,(Z) x (((Z) x (Z)) x (Z)))
+LDF 191		; var Var(fun_42,(Z) x (((Z) x (Z)) x (Z)) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+RTN
+LD 0 0		; var Var(head,(Z) x (((Z) x (Z)) x (Z)))
+LDF 196		; var Var(fun_41,(Z) x (((Z) x (Z)) x (Z)) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+LD 0 1		; var Var(tail,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+CONS
+RTN
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x (Z))])
+CAR
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x (Z))])
+CDR
+LD 1 0		; var Var(go,[(Z) x (((Z) x (Z)) x (Z))] -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+AP 1
+LDF 200		; var Var(fun_40,(Z) x (((Z) x (Z)) x (Z)) -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))] -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x (Z))])
+ATOM
+SEL 167 206		; var Var(if_t_38,UnitType -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))]), var Var(if_f_39,UnitType -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+RTN
+LD 1 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+CDR
+CDR
+CAR
+LD 0 0		; var Var(go,[(Z) x (((Z) x (Z)) x (Z))] -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+AP 1
+RTN
+DUM 1
+LDF 215		; var Var(go_37,[(Z) x (((Z) x (Z)) x (Z))] -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+LDF 219		; var Var(foldRightBody_46,UnitType)
+RAP 1
+RTN
+LD 0 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+CDR
+CDR
+CDR
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 0
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 3
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 4
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 5
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 6
+CEQ
+RTN
+LD 0 0		; var Var(char,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CAR
+RTN
+LD 0 0		; var Var(char,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CDR
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CDR
+CDR
+CDR
+CAR
+RTN
+LD 0 0		; var Var(char,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CDR
+CDR
+CDR
+CDR
+RTN
+LD 0 0		; var Var(ghost,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+LD 1 14		; var Var(vitality,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+AP 1
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(ghost,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+LD 1 14		; var Var(vitality,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+AP 1
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(lambdaMan,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+CAR
+RTN
+LDC 1
+LD 0 0		; var Var(lambdaMan,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+LD 1 21		; var Var(powerLeft,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> Z)
+AP 1
+LDC 0
+CEQ
+SUB
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 0
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 1
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 2
+CEQ
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 3
+CEQ
+RTN
+LDC 0
+JOIN
+LD 0 0		; var Var(next,Z)
+JOIN
+LD 0 0		; var Var(next,Z)
+LDC 3
+CGT
+SEL 327 329		; var Var(if_t_70,UnitType -> Z), var Var(if_f_71,UnitType -> Z)
+RTN
+LD 0 0		; var Var(obj,Z)
+LDC 1
+ADD
+LDF 331		; var Var(fun_69,Z -> Z)
+AP 1
+RTN
+LD 0 0		; var Var(x,Z)
+LD 0 0		; var Var(x,Z)
+LD 0 1		; var Var(y,Z)
+DIV
+LD 0 1		; var Var(y,Z)
+MUL
+SUB
+RTN
+LD 0 0		; var Var(x,Z)
+LDC -1
+MUL
+JOIN
+LD 0 0		; var Var(x,Z)
+JOIN
+LDC 0
+LD 0 0		; var Var(x,Z)
+CGT
+SEL 350 354		; var Var(if_t_74,UnitType -> Z), var Var(if_f_75,UnitType -> Z)
+RTN
+LD 0 0		; var Var(p1lit,(Z) x (Z))
+CDR
+LD 0 1		; var Var(p2lit,(Z) x (Z))
+CDR
+CEQ
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(p1lit,(Z) x (Z))
+CAR
+LD 0 1		; var Var(p2lit,(Z) x (Z))
+CAR
+CEQ
+SEL 361 367		; var Var(if_t_77,UnitType -> BooleanType), var Var(if_f_78,UnitType -> BooleanType)
+RTN
+LDC 0
+JOIN
+LDC 1
+JOIN
+LDC 2
+JOIN
+LDC 3
+JOIN
+LDC -1
+JOIN
+LD 0 0		; var Var(v,(Z) x (Z))
+LDC -1
+LDC 0
+CONS
+LD 1 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 382 384		; var Var(if_t_86,UnitType -> Z), var Var(if_f_87,UnitType -> Z)
+JOIN
+LD 0 0		; var Var(v,(Z) x (Z))
+LDC 0
+LDC 1
+CONS
+LD 1 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 380 386		; var Var(if_t_84,UnitType -> Z), var Var(if_f_85,UnitType -> Z)
+JOIN
+LD 0 0		; var Var(v,(Z) x (Z))
+LDC 1
+LDC 0
+CONS
+LD 1 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 378 394		; var Var(if_t_82,UnitType -> Z), var Var(if_f_83,UnitType -> Z)
+JOIN
+LD 0 0		; var Var(v,(Z) x (Z))
+LDC 0
+LDC -1
+CONS
+LD 1 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 376 402		; var Var(if_t_80,UnitType -> Z), var Var(if_f_81,UnitType -> Z)
+RTN
+LD 0 0		; var Var(from,(Z) x (Z))
+CAR
+LD 0 1		; var Var(to,(Z) x (Z))
+CAR
+SUB
+LD 1 29		; var Var(abs,Z -> Z)
+AP 1
+LD 0 0		; var Var(from,(Z) x (Z))
+CDR
+LD 0 1		; var Var(to,(Z) x (Z))
+CDR
+SUB
+LD 1 29		; var Var(abs,Z -> Z)
+AP 1
+ADD
+RTN
+LD 2 0		; var Var(from,(Z) x (Z))
+LD 0 1		; var Var(acc,[(Z) x (Z)])
+CONS
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[(Z) x (Z)] -> Z -> (Z) x (Z))
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 438 441		; var Var(if_t_97,UnitType -> (Z) x (Z)), var Var(if_f_98,UnitType -> (Z) x (Z))
+RTN
+LD 0 0		; var Var(l,[[(Z) x (Z)]])
+CAR
+JOIN
+LD 0 0		; var Var(l,[[(Z) x (Z)]])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[[(Z) x (Z)]] -> Z -> [(Z) x (Z)])
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 454 457		; var Var(if_t_101,UnitType -> [(Z) x (Z)]), var Var(if_f_102,UnitType -> [(Z) x (Z)])
+RTN
+LD 4 0		; var Var(l,[[(Z) x (Z)]])
+LD 2 0		; var Var(y,Z)
+LD 0 0		; var Var(goElemAt,[[(Z) x (Z)]] -> Z -> [(Z) x (Z)])
+AP 2
+RTN
+DUM 1
+LDF 465		; var Var(goElemAt_100,[[(Z) x (Z)]] -> Z -> [(Z) x (Z)])
+LDF 470		; var Var(elemAtBody_103,UnitType)
+RAP 1
+LD 2 0		; var Var(x,Z)
+LD 0 0		; var Var(goElemAt,[(Z) x (Z)] -> Z -> (Z) x (Z))
+AP 2
+RTN
+DUM 1
+LDF 449		; var Var(goElemAt_96,[(Z) x (Z)] -> Z -> (Z) x (Z))
+LDF 475		; var Var(elemAtBody_99,UnitType)
+RAP 1
+RTN
+LD 2 0		; var Var(curr,(Z) x (Z))
+CDR
+LDF 483		; var Var(fun_95,Z -> (Z) x (Z))
+AP 1
+RTN
+LD 1 0		; var Var(curr,(Z) x (Z))
+CAR
+LDF 488		; var Var(fun_94,Z -> (Z) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(next,(Z) x (Z))
+LD 0 0		; var Var(next,(Z) x (Z))
+LD 1 1		; var Var(acc,[(Z) x (Z)])
+CONS
+LD 2 1		; var Var(computePathGo,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+RTN
+LD 1 0		; var Var(parents,[[(Z) x (Z)]])
+LDF 493		; var Var(fun_93,[[(Z) x (Z)]] -> (Z) x (Z))
+AP 1
+LDF 498		; var Var(fun_104,(Z) x (Z) -> [(Z) x (Z)])
+AP 1
+JOIN
+LD 0 0		; var Var(curr,(Z) x (Z))
+LD 2 0		; var Var(from,(Z) x (Z))
+LD 3 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 434 505		; var Var(if_t_91,UnitType -> [(Z) x (Z)]), var Var(if_f_92,UnitType -> [(Z) x (Z)])
+RTN
+LDC 0
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(el,(Z) x (Z))
+LD 0 1		; var Var(acc,[(Z) x (Z)])
+CONS
+JOIN
+LD 0 1		; var Var(acc,[(Z) x (Z)])
+JOIN
+LD 0 0		; var Var(el,(Z) x (Z))
+LD 5 0		; var Var(from,(Z) x (Z))
+LD 6 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+RTN
+LDC 1
+LD 0 0		; var Var(el,(Z) x (Z))
+LDF 527		; var Var(fun_114,(Z) x (Z) -> BooleanType)
+AP 1
+SUB
+SEL 521 525		; var Var(if_t_112,UnitType -> [(Z) x (Z)]), var Var(if_f_113,UnitType -> [(Z) x (Z)])
+RTN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 1 0		; var Var(go,[(Z) x (Z)] -> [(Z) x (Z)])
+AP 1
+LDF 532		; var Var(fun_111,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+ATOM
+SEL 519 539		; var Var(if_t_109,UnitType -> [(Z) x (Z)]), var Var(if_f_110,UnitType -> [(Z) x (Z)])
+RTN
+LD 2 1		; var Var(to,(Z) x (Z))
+LDC 0
+LD 1 1		; var Var(computePathGo,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+LD 0 0		; var Var(go,[(Z) x (Z)] -> [(Z) x (Z)])
+AP 1
+RTN
+DUM 1
+LDF 548		; var Var(go_108,[(Z) x (Z)] -> [(Z) x (Z)])
+LDF 552		; var Var(foldRightBody_115,UnitType)
+RAP 1
+JOIN
+LD 0 0		; var Var(parents,[[(Z) x (Z)]])
+ATOM
+SEL 517 559		; var Var(if_t_106,UnitType -> [(Z) x (Z)]), var Var(if_f_107,UnitType -> [(Z) x (Z)])
+RTN
+DUM 2
+LD 1 0		; var Var(from,(Z) x (Z))
+LD 1 1		; var Var(to,(Z) x (Z))
+LD 1 2		; var Var(map,[[Z]])
+LD 2 34		; var Var(computeParents,(Z) x (Z) -> (Z) x (Z) -> [[Z]] -> [[(Z) x (Z)]])
+AP 3
+LDF 511		; var Var(computePathGo_90,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)])
+LDF 564		; var Var(computePathBody_105,UnitType)
+RAP 2
+RTN
+LD 1 0		; var Var(dh,Z)
+LD 0 0		; var Var(a,(Z) x (Z))
+LD 3 1		; var Var(target,(Z) x (Z))
+LD 4 32		; var Var(manhattan,(Z) x (Z) -> (Z) x (Z) -> Z)
+AP 2
+MUL
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+JOIN
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 585 588		; var Var(if_t_126,UnitType -> Z), var Var(if_f_127,UnitType -> Z)
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 601 604		; var Var(if_t_130,UnitType -> [Z]), var Var(if_f_131,UnitType -> [Z])
+RTN
+LD 4 0		; var Var(l,[[Z]])
+LD 2 0		; var Var(y,Z)
+LD 0 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+RTN
+DUM 1
+LDF 612		; var Var(goElemAt_129,[[Z]] -> Z -> [Z])
+LDF 617		; var Var(elemAtBody_132,UnitType)
+RAP 1
+LD 2 0		; var Var(x,Z)
+LD 0 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+RTN
+DUM 1
+LDF 596		; var Var(goElemAt_125,[Z] -> Z -> Z)
+LDF 622		; var Var(elemAtBody_128,UnitType)
+RAP 1
+RTN
+LD 2 0		; var Var(a,(Z) x (Z))
+CDR
+LDF 630		; var Var(fun_124,Z -> Z)
+AP 1
+RTN
+LD 1 0		; var Var(a,(Z) x (Z))
+CAR
+LDF 635		; var Var(fun_123,Z -> Z)
+AP 1
+RTN
+LD 4 0		; var Var(dg,Z)
+LD 1 0		; var Var(a,(Z) x (Z))
+LD 5 0		; var Var(start,(Z) x (Z))
+LD 6 32		; var Var(manhattan,(Z) x (Z) -> (Z) x (Z) -> Z)
+AP 2
+MUL
+JOIN
+LD 0 0		; var Var(value,Z)
+JOIN
+LD 0 0		; var Var(value,Z)
+LDC -1
+CEQ
+SEL 645 652		; var Var(if_t_134,UnitType -> Z), var Var(if_f_135,UnitType -> Z)
+RTN
+LD 0 1		; var Var(gMap,[[Z]])
+LDF 640		; var Var(fun_122,[[Z]] -> Z)
+AP 1
+LDF 654		; var Var(fun_133,Z -> Z)
+AP 1
+RTN
+LD 0 0		; var Var(a,(Z) x (Z))
+LD 0 1		; var Var(gMap,[[Z]])
+LD 1 0		; var Var(Glit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+LD 0 0		; var Var(a,(Z) x (Z))
+LD 2 0		; var Var(Hlit,(Z) x (Z) -> Z)
+AP 1
+ADD
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 1 0		; var Var(go,[Z] -> Z)
+AP 1
+LDF 676		; var Var(fun_142,Z -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[Z])
+ATOM
+SEL 674 680		; var Var(if_t_140,UnitType -> Z), var Var(if_f_141,UnitType -> Z)
+RTN
+LD 6 2		; var Var(map,[[Z]])
+CAR
+LD 0 0		; var Var(go,[Z] -> Z)
+AP 1
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 1 0		; var Var(go,[[Z]] -> Z)
+AP 1
+LDF 700		; var Var(fun_147,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+ATOM
+SEL 698 704		; var Var(if_t_145,UnitType -> Z), var Var(if_f_146,UnitType -> Z)
+RTN
+LD 6 2		; var Var(map,[[Z]])
+LD 0 0		; var Var(go,[[Z]] -> Z)
+AP 1
+RTN
+LD 1 0		; var Var(limit,(Z) x (Z))
+CDR
+LD 0 0		; var Var(p,(Z) x (Z))
+CDR
+CGTE
+JOIN
+LDC 0
+JOIN
+LD 1 0		; var Var(limit,(Z) x (Z))
+CAR
+LD 0 0		; var Var(p,(Z) x (Z))
+CAR
+CGTE
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(p,(Z) x (Z))
+CDR
+LDC 0
+CGTE
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(p,(Z) x (Z))
+CAR
+LDC 0
+CGTE
+SEL 737 742		; var Var(if_t_155,UnitType -> BooleanType), var Var(if_f_156,UnitType -> BooleanType)
+SEL 729 735		; var Var(if_t_153,UnitType -> BooleanType), var Var(if_f_154,UnitType -> BooleanType)
+SEL 721 727		; var Var(if_t_151,UnitType -> BooleanType), var Var(if_f_152,UnitType -> BooleanType)
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+JOIN
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 752 755		; var Var(if_t_163,UnitType -> Z), var Var(if_f_164,UnitType -> Z)
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 0 1		; var Var(i,Z)
+LDC 1
+SUB
+LD 1 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+JOIN
+LD 0 1		; var Var(i,Z)
+LDC 0
+CEQ
+SEL 768 771		; var Var(if_t_167,UnitType -> [Z]), var Var(if_f_168,UnitType -> [Z])
+RTN
+LD 4 0		; var Var(l,[[Z]])
+LD 2 0		; var Var(y,Z)
+LD 0 0		; var Var(goElemAt,[[Z]] -> Z -> [Z])
+AP 2
+RTN
+DUM 1
+LDF 779		; var Var(goElemAt_166,[[Z]] -> Z -> [Z])
+LDF 784		; var Var(elemAtBody_169,UnitType)
+RAP 1
+LD 2 0		; var Var(x,Z)
+LD 0 0		; var Var(goElemAt,[Z] -> Z -> Z)
+AP 2
+RTN
+DUM 1
+LDF 763		; var Var(goElemAt_162,[Z] -> Z -> Z)
+LDF 789		; var Var(elemAtBody_165,UnitType)
+RAP 1
+RTN
+LD 2 0		; var Var(a,(Z) x (Z))
+CDR
+LDF 797		; var Var(fun_161,Z -> Z)
+AP 1
+RTN
+LD 1 0		; var Var(a,(Z) x (Z))
+CAR
+LDF 802		; var Var(fun_160,Z -> Z)
+AP 1
+RTN
+LD 8 2		; var Var(map,[[Z]])
+LDF 807		; var Var(fun_159,[[Z]] -> Z)
+AP 1
+LDC 0
+CEQ
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(init,(Z) x (Z))
+LD 0 0		; var Var(n,Z)
+LDC 1
+SUB
+LD 0 1		; var Var(init,(Z) x (Z))
+LD 1 0		; var Var(go,Z -> (Z) x (Z) -> [(Z) x (Z)])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(n,Z)
+LDC 0
+CEQ
+SEL 818 820		; var Var(if_t_172,UnitType -> [(Z) x (Z)]), var Var(if_f_173,UnitType -> [(Z) x (Z)])
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 1 0		; var Var(go,[Z] -> Z)
+AP 1
+LDF 836		; var Var(fun_178,Z -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[Z])
+ATOM
+SEL 834 840		; var Var(if_t_176,UnitType -> Z), var Var(if_f_177,UnitType -> Z)
+RTN
+LD 10 2		; var Var(map,[[Z]])
+CAR
+LD 0 0		; var Var(go,[Z] -> Z)
+AP 1
+RTN
+DUM 1
+LDF 849		; var Var(go_175,[Z] -> Z)
+LDF 853		; var Var(foldRightBody_179,UnitType)
+RAP 1
+LDC -1
+LDC -1
+CONS
+LD 0 0		; var Var(go,Z -> (Z) x (Z) -> [(Z) x (Z)])
+AP 2
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(init,[(Z) x (Z)])
+LD 0 0		; var Var(n,Z)
+LDC 1
+SUB
+LD 0 1		; var Var(init,[(Z) x (Z)])
+LD 1 0		; var Var(go,Z -> [(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(n,Z)
+LDC 0
+CEQ
+SEL 868 870		; var Var(if_t_182,UnitType -> [[(Z) x (Z)]]), var Var(if_f_183,UnitType -> [[(Z) x (Z)]])
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 1 0		; var Var(go,[[Z]] -> Z)
+AP 1
+LDF 886		; var Var(fun_188,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+ATOM
+SEL 884 890		; var Var(if_t_186,UnitType -> Z), var Var(if_f_187,UnitType -> Z)
+RTN
+LD 11 2		; var Var(map,[[Z]])
+LD 0 0		; var Var(go,[[Z]] -> Z)
+AP 1
+RTN
+DUM 1
+LDF 899		; var Var(go_185,[[Z]] -> Z)
+LDF 903		; var Var(foldRightBody_189,UnitType)
+RAP 1
+LD 1 0		; var Var(row,[(Z) x (Z)])
+LD 0 0		; var Var(go,Z -> [(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 2
+RTN
+DUM 1
+LDF 879		; var Var(go_181,Z -> [(Z) x (Z)] -> [[(Z) x (Z)]])
+LDF 907		; var Var(createListBody_184,UnitType)
+RAP 1
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(init,Z)
+LD 0 0		; var Var(n,Z)
+LDC 1
+SUB
+LD 0 1		; var Var(init,Z)
+LD 1 0		; var Var(go,Z -> Z -> [Z])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(n,Z)
+LDC 0
+CEQ
+SEL 920 922		; var Var(if_t_192,UnitType -> [Z]), var Var(if_f_193,UnitType -> [Z])
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 1 0		; var Var(go,[Z] -> Z)
+AP 1
+LDF 938		; var Var(fun_198,Z -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[Z])
+ATOM
+SEL 936 942		; var Var(if_t_196,UnitType -> Z), var Var(if_f_197,UnitType -> Z)
+RTN
+LD 11 2		; var Var(map,[[Z]])
+CAR
+LD 0 0		; var Var(go,[Z] -> Z)
+AP 1
+RTN
+DUM 1
+LDF 951		; var Var(go_195,[Z] -> Z)
+LDF 955		; var Var(foldRightBody_199,UnitType)
+RAP 1
+LDC -1
+LD 0 0		; var Var(go,Z -> Z -> [Z])
+AP 2
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(init,[Z])
+LD 0 0		; var Var(n,Z)
+LDC 1
+SUB
+LD 0 1		; var Var(init,[Z])
+LD 1 0		; var Var(go,Z -> [Z] -> [[Z]])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(n,Z)
+LDC 0
+CEQ
+SEL 968 970		; var Var(if_t_202,UnitType -> [[Z]]), var Var(if_f_203,UnitType -> [[Z]])
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 1 0		; var Var(go,[[Z]] -> Z)
+AP 1
+LDF 986		; var Var(fun_208,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+ATOM
+SEL 984 990		; var Var(if_t_206,UnitType -> Z), var Var(if_f_207,UnitType -> Z)
+RTN
+LD 12 2		; var Var(map,[[Z]])
+LD 0 0		; var Var(go,[[Z]] -> Z)
+AP 1
+RTN
+DUM 1
+LDF 999		; var Var(go_205,[[Z]] -> Z)
+LDF 1003		; var Var(foldRightBody_209,UnitType)
+RAP 1
+LD 1 0		; var Var(row,[Z])
+LD 0 0		; var Var(go,Z -> [Z] -> [[Z]])
+AP 2
+RTN
+DUM 1
+LDF 979		; var Var(go_201,Z -> [Z] -> [[Z]])
+LDF 1007		; var Var(createListBody_204,UnitType)
+RAP 1
+RTN
+LDC 0
+JOIN
+LDC 1
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+CDR
+LD 0 1		; var Var(el,(Z) x (Z))
+LD 0 2		; var Var(comp,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+LD 1 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+AP 3
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+CAR
+LD 0 1		; var Var(el,(Z) x (Z))
+LD 0 2		; var Var(comp,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 1022 1024		; var Var(if_t_221,UnitType -> BooleanType), var Var(if_f_222,UnitType -> BooleanType)
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+ATOM
+SEL 1020 1031		; var Var(if_t_219,UnitType -> BooleanType), var Var(if_f_220,UnitType -> BooleanType)
+RTN
+LD 7 2		; var Var(closedList,[(Z) x (Z)])
+LD 1 0		; var Var(p,(Z) x (Z))
+LD 20 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+LD 0 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+AP 3
+RTN
+DUM 1
+LDF 1038		; var Var(go_218,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+LDF 1042		; var Var(containsBody_223,UnitType)
+RAP 1
+RTN
+LDC 1
+JOIN
+LD 0 0		; var Var(p,(Z) x (Z))
+LD 1 0		; var Var(alreadyHandled,(Z) x (Z) -> BooleanType)
+AP 1
+JOIN
+LDC 1
+LD 0 0		; var Var(p,(Z) x (Z))
+LD 11 0		; var Var(isObstacle,(Z) x (Z) -> BooleanType)
+AP 1
+SEL 1053 1055		; var Var(if_t_226,UnitType -> BooleanType), var Var(if_f_227,UnitType -> BooleanType)
+SUB
+RTN
+LDC 1333
+DBUG
+LDC 0
+JOIN
+LDC 0
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CAR
+LD 1 4		; var Var(findCell,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CAR
+LD 0 0		; var Var(i,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CDR
+LD 1 3		; var Var(findColumn,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(i,Z)
+LD 1 2		; var Var(y,Z)
+CEQ
+SEL 1070 1079		; var Var(if_t_241,UnitType -> [[(Z) x (Z)]]), var Var(if_f_242,UnitType -> [[(Z) x (Z)]])
+JOIN
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+ATOM
+SEL 1066 1090		; var Var(if_t_239,UnitType -> [[(Z) x (Z)]]), var Var(if_f_240,UnitType -> [[(Z) x (Z)]])
+RTN
+LDC 1334
+DBUG
+LDC 0
+JOIN
+LD 1 0		; var Var(value,(Z) x (Z))
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(j,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CDR
+LD 1 4		; var Var(findCell,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(j,Z)
+LD 1 1		; var Var(x,Z)
+CEQ
+SEL 1103 1108		; var Var(if_t_246,UnitType -> [(Z) x (Z)]), var Var(if_f_247,UnitType -> [(Z) x (Z)])
+JOIN
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+ATOM
+SEL 1099 1119		; var Var(if_t_244,UnitType -> [(Z) x (Z)]), var Var(if_f_245,UnitType -> [(Z) x (Z)])
+RTN
+LDC 0
+LD 3 0		; var Var(parents,[[(Z) x (Z)]])
+LD 0 3		; var Var(findColumn,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 2
+RTN
+DUM 5
+LD 13 0		; var Var(curCell,(Z) x (Z))
+LD 5 0		; var Var(p,(Z) x (Z))
+CAR
+LD 5 0		; var Var(p,(Z) x (Z))
+CDR
+LDF 1095		; var Var(findColumn_238,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+LDF 1124		; var Var(findCell_243,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+LDF 1128		; var Var(updateBody_248,UnitType)
+RAP 5
+LD 4 0		; var Var(p,(Z) x (Z))
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+CONS
+LD 0 0		; var Var(gMap,[[Z]])
+CONS
+CONS
+JOIN
+LDC 1333
+DBUG
+LDC 0
+JOIN
+LDC 0
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CAR
+LD 1 4		; var Var(findCell,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CAR
+LD 0 0		; var Var(i,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+CDR
+LD 1 3		; var Var(findColumn,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(i,Z)
+LD 1 2		; var Var(y,Z)
+CEQ
+SEL 1154 1163		; var Var(if_t_254,UnitType -> [[(Z) x (Z)]]), var Var(if_f_255,UnitType -> [[(Z) x (Z)]])
+JOIN
+LD 0 1		; var Var(cols,[[(Z) x (Z)]])
+ATOM
+SEL 1150 1174		; var Var(if_t_252,UnitType -> [[(Z) x (Z)]]), var Var(if_f_253,UnitType -> [[(Z) x (Z)]])
+RTN
+LDC 1334
+DBUG
+LDC 0
+JOIN
+LD 1 0		; var Var(value,(Z) x (Z))
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(j,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+CDR
+LD 1 4		; var Var(findCell,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(j,Z)
+LD 1 1		; var Var(x,Z)
+CEQ
+SEL 1187 1192		; var Var(if_t_259,UnitType -> [(Z) x (Z)]), var Var(if_f_260,UnitType -> [(Z) x (Z)])
+JOIN
+LD 0 1		; var Var(cells,[(Z) x (Z)])
+ATOM
+SEL 1183 1203		; var Var(if_t_257,UnitType -> [(Z) x (Z)]), var Var(if_f_258,UnitType -> [(Z) x (Z)])
+RTN
+LDC 0
+LD 3 0		; var Var(parents,[[(Z) x (Z)]])
+LD 0 3		; var Var(findColumn,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 2
+RTN
+LDC 1333
+DBUG
+LDC 0
+JOIN
+LDC 0
+LD 0 1		; var Var(cols,[[Z]])
+CAR
+LD 1 4		; var Var(findCell,Z -> [Z] -> [Z])
+AP 2
+LD 0 1		; var Var(cols,[[Z]])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cols,[[Z]])
+CAR
+LD 0 0		; var Var(i,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cols,[[Z]])
+CDR
+LD 1 3		; var Var(findColumn,Z -> [[Z]] -> [[Z]])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(i,Z)
+LD 1 2		; var Var(y,Z)
+CEQ
+SEL 1221 1230		; var Var(if_t_265,UnitType -> [[Z]]), var Var(if_f_266,UnitType -> [[Z]])
+JOIN
+LD 0 1		; var Var(cols,[[Z]])
+ATOM
+SEL 1217 1241		; var Var(if_t_263,UnitType -> [[Z]]), var Var(if_f_264,UnitType -> [[Z]])
+RTN
+LDC 1334
+DBUG
+LDC 0
+JOIN
+LD 1 0		; var Var(value,Z)
+LD 0 1		; var Var(cells,[Z])
+CDR
+CONS
+JOIN
+LD 0 1		; var Var(cells,[Z])
+CAR
+LD 0 0		; var Var(j,Z)
+LDC 1
+ADD
+LD 0 1		; var Var(cells,[Z])
+CDR
+LD 1 4		; var Var(findCell,Z -> [Z] -> [Z])
+AP 2
+CONS
+JOIN
+LD 0 0		; var Var(j,Z)
+LD 1 1		; var Var(x,Z)
+CEQ
+SEL 1254 1259		; var Var(if_t_270,UnitType -> [Z]), var Var(if_f_271,UnitType -> [Z])
+JOIN
+LD 0 1		; var Var(cells,[Z])
+ATOM
+SEL 1250 1270		; var Var(if_t_268,UnitType -> [Z]), var Var(if_f_269,UnitType -> [Z])
+RTN
+LDC 0
+LD 1 0		; var Var(gMap,[[Z]])
+LD 0 3		; var Var(findColumn,Z -> [[Z]] -> [[Z]])
+AP 2
+RTN
+DUM 5
+LD 13 0		; var Var(curCell,(Z) x (Z))
+LD 5 0		; var Var(p,(Z) x (Z))
+CAR
+LD 5 0		; var Var(p,(Z) x (Z))
+CDR
+LDF 1179		; var Var(findColumn_251,Z -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+LDF 1208		; var Var(findCell_256,Z -> [(Z) x (Z)] -> [(Z) x (Z)])
+LDF 1212		; var Var(updateBody_261,UnitType)
+RAP 5
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+DUM 5
+LD 13 0		; var Var(curCell,(Z) x (Z))
+LD 1 0		; var Var(gMap,[[Z]])
+LD 21 0		; var Var(Glit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+LD 24 0		; var Var(dg,Z)
+ADD
+LD 5 0		; var Var(p,(Z) x (Z))
+CAR
+LD 5 0		; var Var(p,(Z) x (Z))
+CDR
+LDF 1246		; var Var(findColumn_262,Z -> [[Z]] -> [[Z]])
+LDF 1275		; var Var(findCell_267,Z -> [Z] -> [Z])
+LDF 1279		; var Var(updateBody_272,UnitType)
+RAP 5
+CONS
+CONS
+JOIN
+LD 2 0		; var Var(parents,[[(Z) x (Z)]])
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+LD 0 0		; var Var(gMap,[[Z]])
+CONS
+CONS
+JOIN
+LD 4 0		; var Var(p,(Z) x (Z))
+LD 0 0		; var Var(gMap,[[Z]])
+LD 20 0		; var Var(Glit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+LD 12 0		; var Var(curCell,(Z) x (Z))
+LD 0 0		; var Var(gMap,[[Z]])
+LD 20 0		; var Var(Glit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+LD 23 0		; var Var(dg,Z)
+ADD
+CGT
+SEL 1284 1313		; var Var(if_t_249,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]]))), var Var(if_f_250,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+JOIN
+LDC 0
+JOIN
+LDC 1
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+CDR
+LD 0 1		; var Var(el,(Z) x (Z))
+LD 0 2		; var Var(comp,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+LD 1 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+AP 3
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+CAR
+LD 0 1		; var Var(el,(Z) x (Z))
+LD 0 2		; var Var(comp,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 1334 1336		; var Var(if_t_276,UnitType -> BooleanType), var Var(if_f_277,UnitType -> BooleanType)
+JOIN
+LD 0 0		; var Var(list,[(Z) x (Z)])
+ATOM
+SEL 1332 1343		; var Var(if_t_274,UnitType -> BooleanType), var Var(if_f_275,UnitType -> BooleanType)
+RTN
+LD 2 0		; var Var(openList,[(Z) x (Z)])
+LD 5 0		; var Var(p,(Z) x (Z))
+LD 26 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+LD 0 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+AP 3
+RTN
+LDC 1
+DUM 1
+LDF 1350		; var Var(go_273,[(Z) x (Z)] -> (Z) x (Z) -> ((Z) x (Z) -> (Z) x (Z) -> BooleanType) -> BooleanType)
+LDF 1354		; var Var(containsBody_278,UnitType)
+RAP 1
+SUB
+SEL 1133 1319		; var Var(if_t_236,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]]))), var Var(if_f_237,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+JOIN
+LD 2 0		; var Var(parents,[[(Z) x (Z)]])
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+LD 0 0		; var Var(gMap,[[Z]])
+CONS
+CONS
+JOIN
+LD 4 0		; var Var(p,(Z) x (Z))
+LD 5 0		; var Var(shouldConsider,(Z) x (Z) -> BooleanType)
+AP 1
+JOIN
+LDC 0
+JOIN
+LD 4 0		; var Var(p,(Z) x (Z))
+LD 17 0		; var Var(inRange,(Z) x (Z) -> BooleanType)
+AP 1
+SEL 1374 1378		; var Var(if_t_279,UnitType -> BooleanType), var Var(if_f_280,UnitType -> BooleanType)
+SEL 1360 1368		; var Var(if_t_234,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]]))), var Var(if_f_235,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+RTN
+LD 2 0		; var Var(bind_1lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CDR
+CDR
+LDF 1380		; var Var(fun_233,[[Z]] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+RTN
+LD 1 0		; var Var(bind_1lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CDR
+CAR
+LDF 1386		; var Var(fun_232,[(Z) x (Z)] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+RTN
+LD 0 0		; var Var(bind_1lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CAR
+LDF 1392		; var Var(fun_231,[[(Z) x (Z)]] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+RTN
+LD 0 1		; var Var(localState,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+LDF 1398		; var Var(fun_230,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+RTN
+LD 2 0		; var Var(list,[(Z) x (Z)])
+CAR
+JOIN
+LD 0 0		; var Var(el,(Z) x (Z))
+JOIN
+LD 0 1		; var Var(curMax,(Z) x (Z))
+JOIN
+LD 0 1		; var Var(curMax,(Z) x (Z))
+LD 3 1		; var Var(gMap,[[Z]])
+LD 19 0		; var Var(Flit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+LD 0 0		; var Var(el,(Z) x (Z))
+LD 3 1		; var Var(gMap,[[Z]])
+LD 19 0		; var Var(Flit,(Z) x (Z) -> [[Z]] -> Z)
+AP 2
+CGT
+SEL 1410 1412		; var Var(if_t_287,UnitType -> (Z) x (Z)), var Var(if_f_288,UnitType -> (Z) x (Z))
+RTN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 1 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z))
+AP 1
+LDF 1414		; var Var(fun_286,(Z) x (Z) -> (Z) x (Z) -> (Z) x (Z))
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+ATOM
+SEL 1407 1425		; var Var(if_t_284,UnitType -> (Z) x (Z)), var Var(if_f_285,UnitType -> (Z) x (Z))
+RTN
+LD 1 0		; var Var(list,[(Z) x (Z)])
+LD 0 0		; var Var(go,[(Z) x (Z)] -> (Z) x (Z))
+AP 1
+RTN
+DUM 1
+LDF 1434		; var Var(go_283,[(Z) x (Z)] -> (Z) x (Z))
+LDF 1438		; var Var(foldRightBody_289,UnitType)
+RAP 1
+RTN
+LD 11 3		; var Var(parents,[[(Z) x (Z)]])
+LD 11 1		; var Var(openList,[(Z) x (Z)])
+LD 11 4		; var Var(gMap,[[Z]])
+CONS
+CONS
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 1 0		; var Var(go,[(Z) x (Z)] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+LD 3 0		; var Var(checkCell,(Z) x (Z) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+ATOM
+SEL 1447 1453		; var Var(if_t_292,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]]))), var Var(if_f_293,UnitType -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+RTN
+LD 5 0		; var Var(cells,[(Z) x (Z)])
+LD 0 0		; var Var(go,[(Z) x (Z)] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+AP 1
+RTN
+LDC 0
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(el,(Z) x (Z))
+LD 0 1		; var Var(acc,[(Z) x (Z)])
+CONS
+JOIN
+LD 0 1		; var Var(acc,[(Z) x (Z)])
+JOIN
+LD 0 0		; var Var(el,(Z) x (Z))
+LD 4 0		; var Var(nextCell,(Z) x (Z))
+LD 32 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+RTN
+LDC 1
+LD 0 0		; var Var(el,(Z) x (Z))
+LDF 1480		; var Var(fun_309,(Z) x (Z) -> BooleanType)
+AP 1
+SUB
+SEL 1474 1478		; var Var(if_t_307,UnitType -> [(Z) x (Z)]), var Var(if_f_308,UnitType -> [(Z) x (Z)])
+RTN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 1 0		; var Var(go,[(Z) x (Z)] -> [(Z) x (Z)])
+AP 1
+LDF 1485		; var Var(fun_306,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+ATOM
+SEL 1472 1492		; var Var(if_t_304,UnitType -> [(Z) x (Z)]), var Var(if_f_305,UnitType -> [(Z) x (Z)])
+RTN
+LD 3 0		; var Var(openList,[(Z) x (Z)])
+LD 0 0		; var Var(go,[(Z) x (Z)] -> [(Z) x (Z)])
+AP 1
+RTN
+LD 5 0		; var Var(parents,[[(Z) x (Z)]])
+JOIN
+LD 2 0		; var Var(nextCell,(Z) x (Z))
+LD 1 0		; var Var(nextOpenList,[(Z) x (Z)])
+LD 0 0		; var Var(nextClosedList,[(Z) x (Z)])
+LD 5 0		; var Var(parents,[[(Z) x (Z)]])
+LD 3 0		; var Var(gMap,[[Z]])
+LD 18 0		; var Var(loop,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)] -> [[(Z) x (Z)]] -> [[Z]] -> [[(Z) x (Z)]])
+AP 5
+JOIN
+LD 2 0		; var Var(nextCell,(Z) x (Z))
+LD 29 1		; var Var(target,(Z) x (Z))
+LD 30 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 1509 1511		; var Var(if_t_313,UnitType -> [[(Z) x (Z)]]), var Var(if_f_314,UnitType -> [[(Z) x (Z)]])
+RTN
+LD 1 0		; var Var(nextCell,(Z) x (Z))
+LD 16 2		; var Var(closedList,[(Z) x (Z)])
+CONS
+LDF 1519		; var Var(fun_312,[(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 1
+RTN
+DUM 1
+LDF 1501		; var Var(go_303,[(Z) x (Z)] -> [(Z) x (Z)])
+LDF 1505		; var Var(foldRightBody_310,UnitType)
+RAP 1
+LDF 1525		; var Var(fun_311,[(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+LD 0 0		; var Var(gMap,[[Z]])
+LD 5 0		; var Var(findCellWithSmallestFlit,[(Z) x (Z)] -> [[Z]] -> (Z) x (Z))
+AP 2
+LDF 1531		; var Var(fun_302,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+JOIN
+LD 1 0		; var Var(openList,[(Z) x (Z)])
+ATOM
+SEL 1470 1538		; var Var(if_t_300,UnitType -> [[(Z) x (Z)]]), var Var(if_f_301,UnitType -> [[(Z) x (Z)]])
+RTN
+LD 2 0		; var Var(bind_2lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CDR
+CDR
+LDF 1545		; var Var(fun_299,[[Z]] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 1 0		; var Var(bind_2lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CDR
+CAR
+LDF 1549		; var Var(fun_298,[(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 0 0		; var Var(bind_2lit,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+CAR
+LDF 1555		; var Var(fun_297,[[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 0 0		; var Var(nextState,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+LDF 1561		; var Var(fun_296,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> [[(Z) x (Z)]])
+AP 1
+RTN
+DUM 1
+LDF 1462		; var Var(go_291,[(Z) x (Z)] -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+LDF 1466		; var Var(foldRightBody_294,UnitType)
+RAP 1
+LDF 1566		; var Var(fun_295,([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 1442		; var Var(fun_282,[(Z) x (Z)] -> [[Z]] -> (Z) x (Z))
+LDF 1570		; var Var(fun_290,([(Z) x (Z)] -> [[Z]] -> (Z) x (Z)) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 1403		; var Var(fun_229,(Z) x (Z) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])))
+LDF 1577		; var Var(fun_281,((Z) x (Z) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]])) -> ([[(Z) x (Z)]]) x (([(Z) x (Z)]) x ([[Z]]))) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 1059		; var Var(fun_225,(Z) x (Z) -> BooleanType)
+LDF 1581		; var Var(fun_228,((Z) x (Z) -> BooleanType) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 1048		; var Var(fun_217,(Z) x (Z) -> BooleanType)
+LDF 1585		; var Var(fun_224,((Z) x (Z) -> BooleanType) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 3 0		; var Var(Ncell,(Z) x (Z))
+LD 2 0		; var Var(Scell,(Z) x (Z))
+LD 1 0		; var Var(Ecell,(Z) x (Z))
+LD 0 0		; var Var(Wcell,(Z) x (Z))
+LDC 0
+CONS
+CONS
+CONS
+CONS
+LDF 1589		; var Var(fun_216,[(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 3 0		; var Var(curCell,(Z) x (Z))
+CAR
+LDC -1
+LDC 0
+CONS
+CAR
+ADD
+LD 3 0		; var Var(curCell,(Z) x (Z))
+CDR
+LDC -1
+LDC 0
+CONS
+CDR
+ADD
+CONS
+LDF 1593		; var Var(fun_215,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 2 0		; var Var(curCell,(Z) x (Z))
+CAR
+LDC 1
+LDC 0
+CONS
+CAR
+ADD
+LD 2 0		; var Var(curCell,(Z) x (Z))
+CDR
+LDC 1
+LDC 0
+CONS
+CDR
+ADD
+CONS
+LDF 1605		; var Var(fun_214,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 1 0		; var Var(curCell,(Z) x (Z))
+CAR
+LDC 0
+LDC 1
+CONS
+CAR
+ADD
+LD 1 0		; var Var(curCell,(Z) x (Z))
+CDR
+LDC 0
+LDC 1
+CONS
+CDR
+ADD
+CONS
+LDF 1623		; var Var(fun_213,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 0 0		; var Var(curCell,(Z) x (Z))
+CAR
+LDC 0
+LDC -1
+CONS
+CAR
+ADD
+LD 0 0		; var Var(curCell,(Z) x (Z))
+CDR
+LDC 0
+LDC -1
+CONS
+CDR
+ADD
+CONS
+LDF 1641		; var Var(fun_212,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 11 0		; var Var(start,(Z) x (Z))
+LDC 0
+LD 11 0		; var Var(start,(Z) x (Z))
+LDC 0
+CONS
+LD 2 0		; var Var(parentsInit,[[(Z) x (Z)]])
+LD 1 0		; var Var(gMapInit,[[Z]])
+LD 0 0		; var Var(loop,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)] -> [[(Z) x (Z)]] -> [[Z]] -> [[(Z) x (Z)]])
+AP 5
+RTN
+DUM 1
+LDF 1659		; var Var(loop_211,(Z) x (Z) -> [(Z) x (Z)] -> [(Z) x (Z)] -> [[(Z) x (Z)]] -> [[Z]] -> [[(Z) x (Z)]])
+LDF 1677		; var Var(pathfindingBody_315,UnitType)
+RAP 1
+RTN
+DUM 1
+LDF 931		; var Var(go_191,Z -> Z -> [Z])
+LDF 960		; var Var(createListBody_194,UnitType)
+RAP 1
+LDF 1015		; var Var(fun_200,[Z] -> [[Z]])
+AP 1
+LDF 1687		; var Var(fun_210,[[Z]] -> [[(Z) x (Z)]])
+AP 1
+RTN
+DUM 1
+LDF 829		; var Var(go_171,Z -> (Z) x (Z) -> [(Z) x (Z)])
+LDF 858		; var Var(createListBody_174,UnitType)
+RAP 1
+LDF 915		; var Var(fun_180,[(Z) x (Z)] -> [[(Z) x (Z)]])
+AP 1
+LDF 1692		; var Var(fun_190,[[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 812		; var Var(fun_158,(Z) x (Z) -> BooleanType)
+LDF 1701		; var Var(fun_170,((Z) x (Z) -> BooleanType) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 744		; var Var(fun_150,(Z) x (Z) -> BooleanType)
+LDF 1710		; var Var(fun_157,((Z) x (Z) -> BooleanType) -> [[(Z) x (Z)]])
+AP 1
+RTN
+DUM 1
+LDF 689		; var Var(go_139,[Z] -> Z)
+LDF 693		; var Var(foldRightBody_143,UnitType)
+RAP 1
+LDC 1
+SUB
+DUM 1
+LDF 713		; var Var(go_144,[[Z]] -> Z)
+LDF 717		; var Var(foldRightBody_148,UnitType)
+RAP 1
+LDC 1
+SUB
+CONS
+LDF 1714		; var Var(fun_149,(Z) x (Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 665		; var Var(fun_137,(Z) x (Z) -> [[Z]] -> Z)
+LDF 1718		; var Var(fun_138,((Z) x (Z) -> [[Z]] -> Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 659		; var Var(fun_121,(Z) x (Z) -> [[Z]] -> Z)
+LDF 1734		; var Var(fun_136,((Z) x (Z) -> [[Z]] -> Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDF 578		; var Var(fun_119,(Z) x (Z) -> Z)
+LDF 1738		; var Var(fun_120,((Z) x (Z) -> Z) -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDC 1
+LDF 1742		; var Var(fun_118,Z -> [[(Z) x (Z)]])
+AP 1
+RTN
+LDC 1
+LDF 1746		; var Var(fun_117,Z -> [[(Z) x (Z)]])
+AP 1
+RTN
+LD 0 0		; var Var(a,BooleanType)
+JOIN
+LDC 0
+JOIN
+LDC 1
+JOIN
+LD 0 1		; var Var(b,BooleanType)
+JOIN
+LD 0 0		; var Var(a,BooleanType)
+SEL 1758 1760		; var Var(if_t_319,UnitType -> BooleanType), var Var(if_f_320,UnitType -> BooleanType)
+SEL 1754 1756		; var Var(if_t_317,UnitType -> BooleanType), var Var(if_f_318,UnitType -> BooleanType)
+RTN
+LDC 0
+LDC 0
+CONS
+JOIN
+LD 3 0		; var Var(el,[(Z) x (Z)])
+LD 0 0		; var Var(pos,Z)
+CONS
+LD 1 0		; var Var(acc,[([(Z) x (Z)]) x (Z)])
+CONS
+JOIN
+LD 1 0		; var Var(acc,[([(Z) x (Z)]) x (Z)])
+JOIN
+LDC 1
+LD 0 0		; var Var(row,[(Z) x (Z)])
+ATOM
+SUB
+RTN
+LDC 1
+LD 3 0		; var Var(el,[(Z) x (Z)])
+LDF 1778		; var Var(fun_331,[(Z) x (Z)] -> BooleanType)
+AP 1
+SUB
+SEL 1770 1776		; var Var(if_t_329,UnitType -> [([(Z) x (Z)]) x (Z)]), var Var(if_f_330,UnitType -> [([(Z) x (Z)]) x (Z)])
+LD 0 0		; var Var(pos,Z)
+LDC 1
+ADD
+CONS
+RTN
+LD 1 0		; var Var(bind_5lit,([([(Z) x (Z)]) x (Z)]) x (Z))
+CDR
+LDF 1783		; var Var(fun_328,Z -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(bind_5lit,([([(Z) x (Z)]) x (Z)]) x (Z))
+CAR
+LDF 1794		; var Var(fun_327,[([(Z) x (Z)]) x (Z)] -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 1		; var Var(accPair,([([(Z) x (Z)]) x (Z)]) x (Z))
+LDF 1799		; var Var(fun_326,([([(Z) x (Z)]) x (Z)]) x (Z) -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(l,[[(Z) x (Z)]])
+CAR
+LD 0 0		; var Var(l,[[(Z) x (Z)]])
+CDR
+LD 1 0		; var Var(go,[[(Z) x (Z)]] -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 1
+LDF 1804		; var Var(fun_325,[(Z) x (Z)] -> ([([(Z) x (Z)]) x (Z)]) x (Z) -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[(Z) x (Z)]])
+ATOM
+SEL 1766 1808		; var Var(if_t_323,UnitType -> ([([(Z) x (Z)]) x (Z)]) x (Z)), var Var(if_f_324,UnitType -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+RTN
+LDC 0
+JOIN
+LDC 0
+LDC 0
+CONS
+JOIN
+LD 3 0		; var Var(el,Z)
+LD 0 0		; var Var(pos,Z)
+CONS
+LD 1 0		; var Var(acc,[(Z) x (Z)])
+CONS
+JOIN
+LD 1 0		; var Var(acc,[(Z) x (Z)])
+JOIN
+LD 0 0		; var Var(cell,Z)
+LD 13 11		; var Var(isFruit,Z -> BooleanType)
+AP 1
+RTN
+LDC 1
+LD 3 0		; var Var(el,Z)
+LDF 1835		; var Var(fun_347,Z -> BooleanType)
+AP 1
+SUB
+SEL 1827 1833		; var Var(if_t_345,UnitType -> [(Z) x (Z)]), var Var(if_f_346,UnitType -> [(Z) x (Z)])
+LD 0 0		; var Var(pos,Z)
+LDC 1
+ADD
+CONS
+RTN
+LD 1 0		; var Var(bind_4lit,([(Z) x (Z)]) x (Z))
+CDR
+LDF 1839		; var Var(fun_344,Z -> ([(Z) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(bind_4lit,([(Z) x (Z)]) x (Z))
+CAR
+LDF 1850		; var Var(fun_343,[(Z) x (Z)] -> ([(Z) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 1		; var Var(accPair,([(Z) x (Z)]) x (Z))
+LDF 1855		; var Var(fun_342,([(Z) x (Z)]) x (Z) -> ([(Z) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 1 0		; var Var(go,[Z] -> ([(Z) x (Z)]) x (Z))
+AP 1
+LDF 1860		; var Var(fun_341,Z -> ([(Z) x (Z)]) x (Z) -> ([(Z) x (Z)]) x (Z))
+AP 2
+JOIN
+LD 0 0		; var Var(l,[Z])
+ATOM
+SEL 1823 1864		; var Var(if_t_339,UnitType -> ([(Z) x (Z)]) x (Z)), var Var(if_f_340,UnitType -> ([(Z) x (Z)]) x (Z))
+RTN
+LD 1 0		; var Var(row,[Z])
+LD 0 0		; var Var(go,[Z] -> ([(Z) x (Z)]) x (Z))
+AP 1
+RTN
+DUM 1
+LDF 1873		; var Var(go_338,[Z] -> ([(Z) x (Z)]) x (Z))
+LDF 1877		; var Var(foldRightBody_348,UnitType)
+RAP 1
+CAR
+RTN
+LD 0 0		; var Var(head,[Z])
+LDF 1881		; var Var(fun_337,[Z] -> [(Z) x (Z)])
+AP 1
+LD 0 1		; var Var(tail,[[(Z) x (Z)]])
+CONS
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 1 0		; var Var(go,[[Z]] -> [[(Z) x (Z)]])
+AP 1
+LDF 1887		; var Var(fun_336,[Z] -> [[(Z) x (Z)]] -> [[(Z) x (Z)]])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+ATOM
+SEL 1821 1893		; var Var(if_t_334,UnitType -> [[(Z) x (Z)]]), var Var(if_f_335,UnitType -> [[(Z) x (Z)]])
+RTN
+LD 2 0		; var Var(map,[[Z]])
+LD 0 0		; var Var(go,[[Z]] -> [[(Z) x (Z)]])
+AP 1
+RTN
+DUM 1
+LDF 1902		; var Var(go_333,[[Z]] -> [[(Z) x (Z)]])
+LDF 1906		; var Var(foldRightBody_349,UnitType)
+RAP 1
+LD 0 0		; var Var(go,[[(Z) x (Z)]] -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(head,([(Z) x (Z)]) x (Z))
+CDR
+LD 0 0		; var Var(head,([(Z) x (Z)]) x (Z))
+CAR
+CAR
+CDR
+CONS
+RTN
+DUM 1
+LDF 1817		; var Var(go_322,[[(Z) x (Z)]] -> ([([(Z) x (Z)]) x (Z)]) x (Z))
+LDF 1910		; var Var(foldRightBody_332,UnitType)
+RAP 1
+CAR
+CAR
+LDF 1917		; var Var(fun_350,([(Z) x (Z)]) x (Z) -> (Z) x (Z))
+AP 1
+RTN
+LDC 0
+JOIN
+LD 0 0		; var Var(head,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+LD 6 15		; var Var(location,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> (Z) x (Z))
+AP 1
+LD 0 1		; var Var(tail,[(Z) x (Z)])
+CONS
+RTN
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+CAR
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+CDR
+LD 1 0		; var Var(go,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))] -> [(Z) x (Z)])
+AP 1
+LDF 1936		; var Var(fun_357,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> [(Z) x (Z)] -> [(Z) x (Z)])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+ATOM
+SEL 1934 1942		; var Var(if_t_355,UnitType -> [(Z) x (Z)]), var Var(if_f_356,UnitType -> [(Z) x (Z)])
+RTN
+LD 1 0		; var Var(ghostStatuses,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+LD 0 0		; var Var(go,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))] -> [(Z) x (Z)])
+AP 1
+RTN
+LDC 0
+JOIN
+LD 0 0		; var Var(pos,(Z) x (Z))
+CDR
+LD 7 2		; var Var(y,Z)
+CEQ
+JOIN
+LDC 0
+JOIN
+LD 0 0		; var Var(pos,(Z) x (Z))
+CAR
+LD 7 1		; var Var(x,Z)
+CEQ
+SEL 1961 1966		; var Var(if_t_365,UnitType -> BooleanType), var Var(if_f_366,UnitType -> BooleanType)
+RTN
+LD 0 0		; var Var(head,(Z) x (Z))
+LDF 1968		; var Var(fun_364,(Z) x (Z) -> BooleanType)
+AP 1
+LD 0 1		; var Var(tail,[BooleanType])
+CONS
+RTN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CAR
+LD 0 0		; var Var(l,[(Z) x (Z)])
+CDR
+LD 1 0		; var Var(go,[(Z) x (Z)] -> [BooleanType])
+AP 1
+LDF 1974		; var Var(fun_363,(Z) x (Z) -> [BooleanType] -> [BooleanType])
+AP 2
+JOIN
+LD 0 0		; var Var(l,[(Z) x (Z)])
+ATOM
+SEL 1959 1980		; var Var(if_t_361,UnitType -> [BooleanType]), var Var(if_f_362,UnitType -> [BooleanType])
+RTN
+LD 1 0		; var Var(ghostLocations,[(Z) x (Z)])
+LD 0 0		; var Var(go,[(Z) x (Z)] -> [BooleanType])
+AP 1
+RTN
+LDC 1
+JOIN
+LD 0 0		; var Var(ghostsInPos,BooleanType)
+JOIN
+LD 3 0		; var Var(item,Z)
+LD 5 7		; var Var(isWall,Z -> BooleanType)
+AP 1
+SEL 1997 1999		; var Var(if_t_369,UnitType -> BooleanType), var Var(if_f_370,UnitType -> BooleanType)
+RTN
+DUM 1
+LDF 1989		; var Var(go_360,[(Z) x (Z)] -> [BooleanType])
+LDF 1993		; var Var(foldRightBody_367,UnitType)
+RAP 1
+LD 4 1		; var Var(any,[BooleanType] -> BooleanType)
+AP 1
+LDF 2001		; var Var(fun_368,BooleanType -> BooleanType)
+AP 1
+RTN
+DUM 1
+LDF 1951		; var Var(go_354,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))] -> [(Z) x (Z)])
+LDF 1955		; var Var(foldRightBody_358,UnitType)
+RAP 1
+LDF 2006		; var Var(fun_359,[(Z) x (Z)] -> BooleanType)
+AP 1
+RTN
+LD 1 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 2 5		; var Var(world_ghostsStatus,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> [(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))])
+AP 1
+LDF 2015		; var Var(fun_353,[(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))] -> BooleanType)
+AP 1
+RTN
+LD 0 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 0 1		; var Var(x,Z)
+LD 0 2		; var Var(y,Z)
+LD 1 4		; var Var(world_itemAt,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> Z -> Z)
+AP 3
+LDF 2022		; var Var(fun_352,Z -> BooleanType)
+AP 1
+RTN
+LD 1 0		; var Var(loc,(Z) x (Z))
+CAR
+LDC 1
+SUB
+LD 1 0		; var Var(loc,(Z) x (Z))
+CDR
+CONS
+JOIN
+LD 1 0		; var Var(loc,(Z) x (Z))
+CAR
+LDC 1
+ADD
+LD 1 0		; var Var(loc,(Z) x (Z))
+CDR
+CONS
+JOIN
+LD 1 0		; var Var(loc,(Z) x (Z))
+CAR
+LD 1 0		; var Var(loc,(Z) x (Z))
+CDR
+LDC 1
+SUB
+CONS
+JOIN
+LD 1 0		; var Var(loc,(Z) x (Z))
+CAR
+LD 1 0		; var Var(loc,(Z) x (Z))
+CDR
+LDC 1
+ADD
+CONS
+JOIN
+LD 0 0		; var Var(cond_6lit,Z)
+LDC 0
+CEQ
+SEL 2052 2060		; var Var(if_t_378,UnitType -> (Z) x (Z)), var Var(if_f_379,UnitType -> (Z) x (Z))
+JOIN
+LD 0 0		; var Var(cond_6lit,Z)
+LDC 1
+CEQ
+SEL 2044 2068		; var Var(if_t_376,UnitType -> (Z) x (Z)), var Var(if_f_377,UnitType -> (Z) x (Z))
+JOIN
+LD 0 0		; var Var(cond_6lit,Z)
+LDC 3
+CEQ
+SEL 2036 2073		; var Var(if_t_374,UnitType -> (Z) x (Z)), var Var(if_f_375,UnitType -> (Z) x (Z))
+RTN
+LD 2 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 0 0		; var Var(nextPos,(Z) x (Z))
+CAR
+LD 0 0		; var Var(nextPos,(Z) x (Z))
+CDR
+LD 3 37		; var Var(obstacleAt,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> Z -> BooleanType)
+AP 3
+RTN
+LD 1 1		; var Var(dir,Z)
+LDF 2078		; var Var(fun_373,Z -> (Z) x (Z))
+AP 1
+LDF 2083		; var Var(fun_380,(Z) x (Z) -> BooleanType)
+AP 1
+RTN
+LD 0 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 1 3		; var Var(world_lambdaStatus,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+LD 1 15		; var Var(location,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> (Z) x (Z))
+AP 1
+LDF 2091		; var Var(fun_372,(Z) x (Z) -> BooleanType)
+AP 1
+RTN
+LD 0 0		; var Var(mov,Z)
+JOIN
+LD 0 0		; var Var(nextMov,Z)
+LD 2 0		; var Var(go,Z -> Z)
+AP 1
+JOIN
+LD 1 0		; var Var(mov,Z)
+LD 4 27		; var Var(nextDir,Z -> Z)
+AP 1
+LD 2 0		; var Var(go,Z -> Z)
+AP 1
+JOIN
+LDC 1
+LD 1 0		; var Var(mov,Z)
+LD 0 0		; var Var(nextMov,Z)
+CEQ
+SUB
+SEL 2107 2111		; var Var(if_t_386,UnitType -> Z), var Var(if_f_387,UnitType -> Z)
+RTN
+LD 2 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 2 1		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+LD 3 42		; var Var(randomMove,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+AP 2
+LDF 2117		; var Var(fun_385,Z -> Z)
+AP 1
+JOIN
+LDC 1
+LD 2 0		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 0 0		; var Var(mov,Z)
+LD 3 38		; var Var(obstacleInDir,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> Z -> BooleanType)
+AP 2
+SUB
+SEL 2105 2124		; var Var(if_t_383,UnitType -> Z), var Var(if_f_384,UnitType -> Z)
+RTN
+LD 1 1		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+LD 2 40		; var Var(getMovement,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+AP 1
+LD 0 0		; var Var(go,Z -> Z)
+AP 1
+RTN
+DUM 1
+LDF 2131		; var Var(go_382,Z -> Z)
+LDF 2139		; var Var(chooseFreeDir_388,UnitType)
+RAP 1
+RTN
+LD 0 0		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CAR
+RTN
+LD 0 0		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CAR
+RTN
+LD 0 1		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+LD 1 41		; var Var(getTick,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> Z)
+AP 1
+LDC 4
+LD 1 28		; var Var(mod,Z -> Z -> Z)
+AP 2
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[[Z]])
+CAR
+LD 0 0		; var Var(l,[[Z]])
+CDR
+LD 1 0		; var Var(go,[[Z]] -> Z)
+AP 1
+LDF 2166		; var Var(fun_402,[Z] -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[[Z]])
+ATOM
+SEL 2164 2170		; var Var(if_t_400,UnitType -> Z), var Var(if_f_401,UnitType -> Z)
+RTN
+LD 1 0		; var Var(map,[[Z]])
+LD 0 0		; var Var(go,[[Z]] -> Z)
+AP 1
+RTN
+LDC 0
+JOIN
+LD 0 1		; var Var(n,Z)
+LDC 1
+ADD
+RTN
+LD 0 0		; var Var(l,[Z])
+CAR
+LD 0 0		; var Var(l,[Z])
+CDR
+LD 1 0		; var Var(go,[Z] -> Z)
+AP 1
+LDF 2189		; var Var(fun_408,Z -> Z -> Z)
+AP 2
+JOIN
+LD 0 0		; var Var(l,[Z])
+ATOM
+SEL 2187 2193		; var Var(if_t_406,UnitType -> Z), var Var(if_f_407,UnitType -> Z)
+RTN
+LD 2 0		; var Var(map,[[Z]])
+CAR
+LD 0 0		; var Var(go,[Z] -> Z)
+AP 1
+RTN
+LD 6 0		; var Var(dir,Z)
+LD 5 0		; var Var(tick,Z)
+LDC 1
+LDC 1
+CONS
+LD 0 0		; var Var(xSize,Z)
+LDC 2
+SUB
+LDC 1
+CONS
+LD 0 0		; var Var(xSize,Z)
+LDC 2
+SUB
+LD 1 0		; var Var(ySize,Z)
+LDC 2
+SUB
+CONS
+LDC 1
+LD 1 0		; var Var(ySize,Z)
+LDC 2
+SUB
+CONS
+LDC 0
+CONS
+CONS
+CONS
+CONS
+CONS
+CONS
+RTN
+DUM 1
+LDF 2202		; var Var(go_405,[Z] -> Z)
+LDF 2206		; var Var(foldRightBody_409,UnitType)
+RAP 1
+LDF 2211		; var Var(fun_410,Z -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+DUM 1
+LDF 2179		; var Var(go_399,[[Z]] -> Z)
+LDF 2183		; var Var(foldRightBody_403,UnitType)
+RAP 1
+LDF 2241		; var Var(fun_404,Z -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 6 0		; var Var(initWorld,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 5 2		; var Var(world_map,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> [[Z]])
+AP 1
+LDF 2248		; var Var(fun_398,[[Z]] -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 3 0		; var Var(bind_7lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CDR
+CDR
+LDF 2255		; var Var(fun_397,[(Z) x (Z)] -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 2 0		; var Var(bind_7lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CDR
+CAR
+LDF 2261		; var Var(fun_396,(Z) x (Z) -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 1 0		; var Var(bind_7lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CAR
+LDF 2268		; var Var(fun_395,Z -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 0 0		; var Var(bind_7lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CAR
+LDF 2275		; var Var(fun_394,Z -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+RTN
+LD 1 0		; var Var(otherDests,[(Z) x (Z)])
+CAR
+LD 1 0		; var Var(otherDests,[(Z) x (Z)])
+CDR
+CONS
+JOIN
+LD 2 0		; var Var(dest,(Z) x (Z))
+LD 1 0		; var Var(otherDests,[(Z) x (Z)])
+CONS
+JOIN
+LD 0 0		; var Var(nextDir,Z)
+LD 9 0		; var Var(tick,Z)
+LDC 1
+ADD
+LDC 1337
+LD 13 28		; var Var(mod,Z -> Z -> Z)
+AP 2
+LD 4 0		; var Var(newDest,(Z) x (Z))
+LD 3 0		; var Var(newOtherDests,[(Z) x (Z)])
+CONS
+CONS
+CONS
+LD 0 0		; var Var(nextDir,Z)
+CONS
+RTN
+LD 0 0		; var Var(nextPos,(Z) x (Z))
+CAR
+LD 5 0		; var Var(currentPos,(Z) x (Z))
+CAR
+SUB
+LD 0 0		; var Var(nextPos,(Z) x (Z))
+CDR
+LD 5 0		; var Var(currentPos,(Z) x (Z))
+CDR
+SUB
+CONS
+LD 12 31		; var Var(vectorToMove,(Z) x (Z) -> Z)
+AP 1
+LDF 2296		; var Var(fun_425,Z -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(path,[(Z) x (Z)])
+CAR
+LDF 2311		; var Var(fun_424,(Z) x (Z) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 3 0		; var Var(currentPos,(Z) x (Z))
+LD 1 0		; var Var(newDest,(Z) x (Z))
+LD 9 1		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 10 2		; var Var(world_map,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> [[Z]])
+AP 1
+LD 10 33		; var Var(computePath,(Z) x (Z) -> (Z) x (Z) -> [[Z]] -> [(Z) x (Z)])
+AP 3
+LDF 2327		; var Var(fun_423,[(Z) x (Z)] -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 1 0		; var Var(newDestsPair,((Z) x (Z)) x ([(Z) x (Z)]))
+CDR
+LDF 2332		; var Var(fun_422,[(Z) x (Z)] -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(newDestsPair,((Z) x (Z)) x ([(Z) x (Z)]))
+CAR
+LDF 2342		; var Var(fun_421,(Z) x (Z) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(currentPos,(Z) x (Z))
+LD 2 0		; var Var(dest,(Z) x (Z))
+LD 7 30		; var Var(pointEq,(Z) x (Z) -> (Z) x (Z) -> BooleanType)
+AP 2
+SEL 2286 2292		; var Var(if_t_418,UnitType -> ((Z) x (Z)) x ([(Z) x (Z)])), var Var(if_f_419,UnitType -> ((Z) x (Z)) x ([(Z) x (Z)]))
+LDF 2347		; var Var(fun_420,((Z) x (Z)) x ([(Z) x (Z)]) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 5 1		; var Var(world,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))))
+LD 6 3		; var Var(world_lambdaStatus,([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> (Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))))
+AP 1
+LD 6 15		; var Var(location,(Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z)))) -> (Z) x (Z))
+AP 1
+LDF 2352		; var Var(fun_417,(Z) x (Z) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 3 0		; var Var(bind_8lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CDR
+CDR
+LDF 2360		; var Var(fun_416,[(Z) x (Z)] -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 2 0		; var Var(bind_8lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CDR
+CAR
+LDF 2368		; var Var(fun_415,(Z) x (Z) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 1 0		; var Var(bind_8lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CDR
+CAR
+LDF 2375		; var Var(fun_414,Z -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(bind_8lit,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+CAR
+LDF 2382		; var Var(fun_413,Z -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LD 0 0		; var Var(_state,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+LDF 2388		; var Var(fun_412,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+AP 1
+RTN
+LDC 3
+LDC 0
+LDC 0
+LDC 0
+CONS
+LDC 0
+CONS
+CONS
+CONS
+LDF 2281		; var Var(fun_393,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> (Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))))
+AP 1
+LDF 2393		; var Var(fun_411,(Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)]))) -> ([[Z]]) x (((Z) x (((Z) x (Z)) x ((Z) x ((Z) x (Z))))) x (([(Z) x (((Z) x (Z)) x (Z))]) x (Z))) -> ((Z) x ((Z) x (((Z) x (Z)) x ([(Z) x (Z)])))) x (Z))
+CONS
+RTN
